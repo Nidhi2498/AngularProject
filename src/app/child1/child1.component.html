@@ -1,0 +1,23 @@
+<p>child1 works!</p>
+<div>
+    <ul *ngFor = "let item of customerDetails">
+        <li>{{item.id}}</li>
+        <li>{{item.name}}</li>
+        <li>{{item.age}}</li>
+    </ul>
+</div>
+
+
+<h2>Child component</h2>
+<div>
+    <ul *ngFor = "let row of showDetails">
+        <li>{{row.id}}</li>
+        <li>{{row.name}}</li>
+        <li>{{row.currency}}</li>
+    </ul>
+</div>
+
+<!-- <h2>Child show styles</h2>
+<div [ngClass]= "changeStyles? 'primary' :'secondary'" [ngStyle]= "{'font-size.px':24}">
+    some text
+</div> -->
