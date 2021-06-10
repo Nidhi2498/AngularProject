@@ -1,14 +1,22 @@
+<h1>Routing </h1>
+<a routerLink = "child1">Child1</a>
+<br><br>
+<a routerLink = "child2">Child2</a>
+<router-outlet></router-outlet>
+
+
+<!-- 
 <h2>Add update delete the list</h2>
 <form>
     <div class="form-group">
-        <label for="fruitName">Fruit Name:</label>
-        <input [(ngModel)]="fruitName" type="text" required name="Name" class="form-control" />
+        <label for="fruitName" title="Name">Fruit Name:</label>
 
+        <input name="searchtext" class="form-control"  [(ngModel)]= "FruitName"/>
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" type="submit" (click)="onSubmit(value)">Submit</button>
+        <button class="btn btn-primary" type="submit"  (click) = "savefruits()">Submit</button>
     </div>
-</form>
+</form> 
 <p></p>
 <div class="table-responsive">
     <table>
@@ -19,15 +27,17 @@
         </thead>
         <p></p>
         <tbody>
-            <tr *ngFor="let row of fruitName">
-                <td>{{fruitName.value}}</td>
-        </tbody>
+
+           </tbody>
     </table>
-</div>
+</div> -->
+<p></p>
+<span>------------------------------------------------------------------------------------------------</span>
 
-
-<h2>Array List </h2>
+<h2>Display Array List </h2>
 {{ myarr }}
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
 
 <!-- Increment and Decrement value on click event -->
 <h2>Increment or Decrement value</h2>
@@ -35,6 +45,8 @@ Value = {{ Counter }}
 <p></p>
 <button (click)="increment()">Increment</button>
 <button (click)="decrement()">Decrement</button>
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
 
 <h2>Add or Remove number </h2>
 {{ value }}
@@ -42,7 +54,8 @@ Value = {{ Counter }}
 <button (click)="add()">Add value</button>
 <button (click)="remove()">Remove Value</button>
 
-<p></p>
+<p></p><br>
+<span>------------------------------------------------------------------------------------------------</span>
 <!-- Show array -->
 <h3>Parent</h3>
 {{employee}}
@@ -62,6 +75,8 @@ https://www.devglan.com/angular/angular-8-crud-example-->
        
         </ul>
 </div>       -->
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
 <h2>This is my original array</h2>
 <div>
     <ul *ngFor="let item of data">
@@ -72,47 +87,38 @@ https://www.devglan.com/angular/angular-8-crud-example-->
 </div>
 
 <h2>This is my filtered array</h2>
-<div>
-    <!-- <ng-container *ngFor="let row of data"> -->
-    <table>
-        <thead>
+<table>
+    <thead>
+        <tr>
+            <th>Sr. No</th>
+            <th>Currency Name</th>
+            <th>Currency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let row of data">
             <tr>
-                <th>Sr. No</th>
-                <th>Currency Name</th>
-                <th>Currency</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let row of data; let i =index">
-                <tr>
-                    <ng-container [ngSwitch]="row.currency">
-                        <ng-container *ngSwitchCase="'INR'">
-                            <td>{{i + 1}}</td>
-                            <td>{{row.name}}</td>
-                            <td>{{row.currency}}</td>
-                        </ng-container>
+                <ng-container [ngSwitch]="row.currency">
+                    <ng-container *ngSwitchCase="'INR'">
+                        <td>{{row.id}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.currency}}</td>
                     </ng-container>
-                </tr>
-            </ng-container>
-        </tbody>
+                </ng-container>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
 
 
-    </table>
-    <!-- </ng-container> -->
-</div>
-<!-- <div [ngSwitch]="data.length+1">
-    <p *ngSwitchCase="1">One</p>
-    <p *ngSwitchCase="1">two</p>
-    <p *ngSwitchCase="1">three</p>
-    <p *ngSwitchCase="4">four</p>
-    <p *ngSwitchDefault>Default</p> 
-    </div> -->
-
-<div [ngClass]="flag? 'primary':'secondary'">
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
+<!-- <div [ngClass]="flag? 'primary':'secondary'">
     <h2>Text</h2>
 </div>
-<button (click)="flag = !flag">Click here</button>
-<!-- <app-child1 (childevent)= "receivedMessageparent($event)"></app-child1> -->
+<button (click)= "flag = !flag">Click here</button> -->
+<!-- <button (click)= "onChangeStyle($event)">Click Here</button>
+<app-child1 (Changeevent)= "onChangeStyle($event)"></app-child1>  -->
 <!-- <h2>
     <span> Parent component</span> 
 </h2>
@@ -120,3 +126,47 @@ https://www.devglan.com/angular/angular-8-crud-example-->
 <pre></pre>
 <app-child1  [showDetails]= "Value"></app-child1>
  -->
+
+<h2>Example of Pipes</h2>
+<br>
+
+<h4>Currency</h4>
+{{12345.67 | currency:'USD'}}
+<br>
+{{12345.67 | currency:'INR'}}
+<br>
+
+<h4>DatePipe</h4>
+{{dateval | date: 'short'}}
+<br>
+{{dateval | date: 'long'}}
+<br>
+{{dateval | date: 'medium'}}
+<br>
+
+<h4>Decimal</h4>
+{{5.123445 | number: '3.0-0'}}
+<br>
+{{5.123445 | number: '3.1-5'}}
+<br>
+
+<h4>Lowercase Pipe</h4>
+{{'ABCD' | lowercase}}
+<br>
+
+<h4>Uppercase Pipe</h4>
+{{'abcd' | uppercase}}
+<br>
+
+<h4>Percent Pipe</h4>
+{{0.2345 | percent}}
+<br>
+{{42 | percent:'4.1-4'}}
+<br>
+
+<h4>Slice Pipe</h4>
+{{[1,2,3,4,5] | slice:1:4}}
+<br>
+{{[1,2,3,4,5] | slice:2}}
+<br>
+{{[1,2,3,4,5] | slice:2:-2}}

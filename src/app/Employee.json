@@ -1,0 +1,14 @@
+{
+    "Employee":[
+        {"id":1, "emp_name":"Nidhi","emp_designation":"IT"},
+        {"id":2, "emp_name":"Sweta","emp_designation":"HR"},
+        {"id":3, "emp_name":"Twinkle","emp_designation":"IT"},
+        {"id":4, "emp_name":"Komal","emp_designation":"IT"},
+        {"id":5, "emp_name":"Manisha","emp_designation":"HR"},
+        {"id":6, "emp_name":"Jinal","emp_designation":"HR"},
+        {"id":7, "emp_name":"Sonal","emp_designation":"IT"},
+        {"id":8, "emp_name":"Khushbu","emp_designation":"HR"},
+        {"id":9, "emp_name":"Tejal","emp_designation":"IT"},
+        {"id":10, "emp_name":"Mahika","emp_designation":"HR"}
+    ]
+}

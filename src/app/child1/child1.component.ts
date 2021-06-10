@@ -12,7 +12,7 @@ export class Child1Component implements OnInit {
   //@Output() 
   @Input() showDetails : any;
   @Output() passData = new EventEmitter<any>();
-  @Input() changeStyles : any;
+  @Input() Changeevent : any;
   
   shifts: any = [
     {color: 'red'},

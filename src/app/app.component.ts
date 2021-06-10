@@ -10,6 +10,8 @@ import { Child1Component } from './child1/child1.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
+  dateval =  Date.now();
+  public message1 : any;
 
   //Display array list of sending parent to child
   customer = [
@@ -18,9 +20,9 @@ export class AppComponent{
     {id:3, name : "pqr", age : 40}
 ]
   
-  public message1 : any;
 
   myarr = ["mango","apple","grapes","pineapple"];
+  fruitName: any;
   
   
   onGetArraylist($event : any){
@@ -28,7 +30,7 @@ export class AppComponent{
   }
 
   employee = ["abc","pqr","xyz"];
-  
+  //-----------------------------------------------------------------------------------------
   //Increment or decrement the value
   Counter = 10;
   
@@ -38,6 +40,7 @@ export class AppComponent{
   decrement() {
     this.Counter--;
   } 
+  //-----------------------------------------------------------------------------------------
   
   //Add or remove the number
   value : any;
@@ -48,19 +51,16 @@ export class AppComponent{
     this.value = "";
   }
 
-  showData(title1:string){
-  }  
+   //-----------------------------------------------------------------------------------------
+  
   
   message : any;
   receivedMessage = ($event: any) => {
     this.message = $event
   }
 
-  public fruitName : any;
-    onSubmit(value:any) {
-    this.fruitName.push(value);
-  }
-
+  
+ //-----------------------------------------------------------------------------------------
   //Array filtering example by using ngswitch
   data :any =  [
     {
@@ -90,23 +90,24 @@ export class AppComponent{
     }
   ]
 
-  public newArray: any[]= [];
-  // = this.data.filter(function(ele:any){
-  //   debugger
-  //   return ele.currency == "INR";
-  // });
-  
+  public newArray: any = this.data.filter(function(ele:any){
+    return ele.currency == "INR";
+  });
+   //-----------------------------------------------------------------------------------------
   flag : boolean = true;
   onChange($flag : any){
     console.log($flag)
   
   }
-
-  // receivedMessageparent(p){
-  //   this.
-  // }
+ //-----------------------------------------------------------------------------------------
+ 
+//Add update and delete operation examples
+  // public FruitName: any;    
+  // public searchtext: any;
+  // savefruits(){
+  //     this.FruitName.name = this.searchtext.value
+  //   }
 
 }
-
 
 
