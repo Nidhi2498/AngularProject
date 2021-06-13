@@ -4,6 +4,10 @@ import { NgForm } from '@angular/forms';
 import { CommonService } from '../app/common.service'
 import { Child1Component } from './child1/child1.component';
 
+import { Observable, of } from 'rxjs/'
+import { delay }  from 'rxjs/operators'
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +15,10 @@ import { Child1Component } from './child1/child1.component';
 })
 export class AppComponent{
   dateval =  Date.now();
-  public message1 : any;
+  public message = "";
+  public databinding = "";
+
+
 
   //Display array list of sending parent to child
   customer = [
@@ -54,10 +61,10 @@ export class AppComponent{
    //-----------------------------------------------------------------------------------------
   
   
-  message : any;
-  receivedMessage = ($event: any) => {
-    this.message = $event
-  }
+  // message1 : any;
+  // receivedMessage = ($event: any) => {
+  //   this.message = $event
+  // }
 
   
  //-----------------------------------------------------------------------------------------
@@ -90,9 +97,9 @@ export class AppComponent{
     }
   ]
 
-  public newArray: any = this.data.filter(function(ele:any){
-    return ele.currency == "INR";
-  });
+  // public newArray: any = this.data.filter(function(ele:any){
+  //   return ele.currency == "INR";
+  //});
    //-----------------------------------------------------------------------------------------
   flag : boolean = true;
   onChange($flag : any){
@@ -108,6 +115,16 @@ export class AppComponent{
   //     this.FruitName.name = this.searchtext.value
   //   }
 
+   //-----------------------------------------------------------------------------------------
+  //Async Pipe Example
+  name = 'Angular';
+  myObservable : any;
+  d = [{ id:1, Name:"abc", age:20},
+          {id:2, Name:"xyz", age:30}]
+  
+  ngOnInit(){
+    this.myObservable = of(this.d).pipe(delay(3000))
+  }
 }
 
 

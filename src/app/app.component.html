@@ -60,8 +60,8 @@ Value = {{ Counter }}
 <h3>Parent</h3>
 {{employee}}
 
-<h3>Child1</h3>
-<app-child1 [customerDetails]="customer" (passData)="onGetArraylist($event)"></app-child1>
+<h3>Child1 {{message}}</h3>
+<app-child1 [customerDetails]="customer" (passData)= "message=$event"></app-child1>
 <p></p>
 <!-- //(messageEvent) = "receivedMessage($event)" -->
 
@@ -72,7 +72,6 @@ https://www.devglan.com/angular/angular-8-crud-example-->
 <!-- <div *ngFor = "let row of data" >
        <ul [ngSwitch] = "data"> :
            <span>{{data}}</span>
-       
         </ul>
 </div>       -->
 <br>
@@ -170,3 +169,83 @@ https://www.devglan.com/angular/angular-8-crud-example-->
 {{[1,2,3,4,5] | slice:2}}
 <br>
 {{[1,2,3,4,5] | slice:2:-2}}
+
+<br><br>
+<!-- <head>Registration form</head>
+<div>
+    <form class="signup-form" action="/register" method="POST">
+        <div class="form-header">
+            <h1>Create Account</h1>
+        </div>
+        <div class="form-body">
+
+        </div>
+        <div class="form-footer">
+
+        </div>
+    </form>
+</div>
+<div class="form-body">
+    <div class="col-md-6">
+        <div>
+            <label for="firstname" class="label-title">Employee name :</label>
+            <input  type="text" id="firstname" class="form-input" required="required" />
+        </div>
+        <p></p>
+        <div>
+            <label for="lastname" class="label-title">Last name :</label>
+            <input type="text" id="lastname" class="form-input"  />
+        </div>
+        <div>
+            <button type="Save" class="btn" >Save</button>
+        </div>
+        <p></p>
+        <div class="col-md-6">
+            <table>
+                <thead>
+                    <th>Employee Name</th>
+                    <th></th> <th></th>
+                    <th>Employee Designation</th>
+            </thead>
+            </table>
+        </div>
+    </div>
+
+    
+</div> -->
+
+
+<h4>AsyncPipe</h4>
+{{name}}
+<p>Start editing</p>
+<p *ngFor = "let item of myObservable | async">
+    Id: {{item.id}}
+    Name : {{item.name}}
+    Age :{{item.age}}
+</p>
+
+<br>
+<h4>Two way data binding example</h4>
+<input [(ngModel)] = "databinding" type="text">
+{{databinding}}
+
+<br>
+<br>
+<h2>CRUD Operation</h2>
+<div>
+    <nav class="navbar navbar-expand navbar-dark  bg-dark">
+        <a class = "navbar-brand"></a>
+        <div class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a routerLink="products" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="create" class="nav-link">Create</a>
+            </li>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <router-outlet></router-outlet>
+    </div>
+</div>
