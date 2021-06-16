@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CommonService } from './common.service';
 import { Child1Component } from './child1/child1.component';
 import { Child2Component } from './child2/child2.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { ProductListComponent } from './product-list/product-list.component';
     Child2Component,
     ProductCreateComponent,
     ProductDetailsComponent,
-    ProductListComponent
+    ProductListComponent,
+    ReactiveformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {
@@ -37,4 +41,8 @@ import { ProductListComponent } from './product-list/product-list.component';
   providers: [CommonService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+
+}

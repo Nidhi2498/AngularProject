@@ -28,6 +28,14 @@ export class ProductListComponent implements OnInit {
       console.log(error);
     });
   }
+
+   refresh() : void{
+     this.readProducts();
+     this.currentProduct = null;
+     this.currentIndex = -1;
+   }
+   searchByName(){}
+   setCurrentProduct(product :any, index:any){}
    deleteAllProducts(){}
   }
 

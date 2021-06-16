@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Detail } from '../detail.model';
 import { ProductService } from '../service/product.service';
 
 @Component({
@@ -25,7 +26,9 @@ export class ProductCreateComponent implements OnInit {
   createProduct() : void{
     const data = {
       name : this.product.name,
-      description : this.product.description
+      title : this.product.title,
+      description : this.product.description,
+      available : false
       };
 
       this.productService.create(data).subscribe(response=>{
@@ -46,6 +49,14 @@ export class ProductCreateComponent implements OnInit {
         available : false
       };
 
+    }
+
+    //bind model of detail
+    detail : Detail[] = [];
+    onSubmit() {
+      
+      
+      
     }
 
   }

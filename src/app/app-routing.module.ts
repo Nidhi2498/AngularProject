@@ -5,6 +5,7 @@ import {Child2Component} from './child2/child2.component'
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path : 'create',
     component:ProductCreateComponent
   },
+  {
+    path : 'student',
+    component : ReactiveformComponent
+  }
 ];
 
 @NgModule({

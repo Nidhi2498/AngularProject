@@ -1,0 +1,14 @@
+{
+    "student":[{
+        "name" : "abc",
+        "rollno" : 11,
+        "address" : "valsad",
+        "skill" : "playing"
+    },
+    {
+        "name" : "pqr",
+        "rollno" : 10,
+        "address" : "vapi",
+        "skill" : "reading"
+    }]
+}

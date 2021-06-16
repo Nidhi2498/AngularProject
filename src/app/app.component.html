@@ -1,3 +1,5 @@
+<app-reactiveform></app-reactiveform>
+<span>----------------------------------------------------------------------------------</span>
 <h1>Routing </h1>
 <a routerLink = "child1">Child1</a>
 <br><br>
@@ -214,6 +216,7 @@ https://www.devglan.com/angular/angular-8-crud-example-->
     
 </div> -->
 
+<span>------------------------------------------------------------------------------------------------</span>
 
 <h4>AsyncPipe</h4>
 {{name}}
@@ -223,6 +226,7 @@ https://www.devglan.com/angular/angular-8-crud-example-->
     Name : {{item.name}}
     Age :{{item.age}}
 </p>
+<span>------------------------------------------------------------------------------------------------</span>
 
 <br>
 <h4>Two way data binding example</h4>
@@ -230,6 +234,8 @@ https://www.devglan.com/angular/angular-8-crud-example-->
 {{databinding}}
 
 <br>
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
 <br>
 <h2>CRUD Operation</h2>
 <div>
@@ -248,4 +254,11 @@ https://www.devglan.com/angular/angular-8-crud-example-->
     <div class="container mt-5">
         <router-outlet></router-outlet>
     </div>
+</div>
+
+<span>------------------------------------------------------------------------------------------------</span>
+<br>
+<div *ngFor = "let row of detail">
+    {{row.id}}
+    {{row.name}}
 </div>
