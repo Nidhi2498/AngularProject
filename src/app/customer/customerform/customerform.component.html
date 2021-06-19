@@ -1,0 +1,49 @@
+<div class="col-md-12">
+  <h2>Angular CRUD Operation</h2>
+  </div>
+<div class="row">
+<div class="col-md-offset-1 col-md-5">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-body">
+    <form [formGroup]= "customerFormGroup">
+        <div class="form-control">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name"  name="email" formControlName="name">
+        <span *ngIf="customerFormGroup.controls.name.touched && !customerFormGroup.controls.name.valid">This Field is required</span>
+      </div>
+      <div class="form-control">
+        <label for="pwd">Roll No:</label>
+        <input  class="form-control" id="rollno"  name="rollno" formControlName="rollno">
+        <span *ngIf="customerFormGroup.controls.rollno.valid">Only Digit is required</span>
+      </div>
+      <div class="form-control">
+        <label for="pwd">Address:</label>
+        <input type="text" class="form-control" id="address"  name="address" formControlName="address">
+      </div>
+      <div formArrayName="skill">
+              <div class="form-label">Skill: </div> 
+              <button (click)="addskillgroup()">Add</button>
+                <ng-container *ngFor="let item of customerFormGroup.value.skill; let i=index"; [formGroupName]="i">
+                    <div class="form-control">
+                        <label class="form-label">title1</label>
+                        <input type="text" class="form-control" id="skill" formControlName="title1">
+                    </div>
+                    <div class="form-control"> 
+                        <label class="form-label">title2</label>
+                        <input type="text" class="form-control" id="skill"  formControlName="title2">
+                    </div>
+                </ng-container>
+                <span *ngIf= "isSubmitted && _student.name.errors" class="help-block">All Field is Required</span>
+      </div>
+      <div class="checkbox">
+        <button type="submit" class="btn btn-success" (click)= "Save()">Save</button>
+        <button type="submit" class="btn btn-danger" (click)= "Reset()">Reset</button>
+      </div>
+    </form>
+  </div>
+    </div>
+  </div>
+</div>
+</div>
+<router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonService } from '../common.service';
 import { Student } from '../student.model';
 
 @Component({
@@ -11,25 +12,27 @@ export class ReactiveformComponent implements OnInit {
  
   students: FormGroup;
     
-  constructor(private fb: FormBuilder)
+  constructor(private fb: FormBuilder, private commonService: CommonService)
   {
     this.students=this.fb.group({
       name:['', [Validators.required]],
       rollno:['',[Validators.pattern(/^[0-9]\d*$/)]],
       address:[''],
-      skill: this.fb.group({
-        title1:[],
-        title2:[]
-      }),
-      addskillgroup(){}
+      skill: this.fb.array([
+        this.skillGroup()
+      ]),
       })
   }
 
-  skillGroup(){
-    return this.fb.group({
-      title1:[],
-      title2:[]
+  public skillGroup(){
+    return new FormGroup({
+      title1: new FormControl(),
+      title2:new FormControl()
     })
+  }
+
+  getskillarray(){
+    return this.students.get('skill') as FormArray
   }
 
   addskillgroup(){
@@ -38,9 +41,16 @@ export class ReactiveformComponent implements OnInit {
   }
 
   onSubmit(){
+    
     console.log(this.students.value)
 
   }
+
+ 
+  public getStudent(){
+  
+  }
+
   
 
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import { Child1Component } from './child1/child1.component';
 import { Detail } from './detail.model';
 import { Observable, of } from 'rxjs/'
 import { delay }  from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 
 
@@ -18,6 +19,13 @@ export class AppComponent{
   dateval =  Date.now();
   public message = "";
   public databinding = "";
+
+  constructor(private router: Router) {}
+
+    newChange(): void {
+        this.router.navigateByUrl('customer');
+    }
+
 
 
 
@@ -125,11 +133,15 @@ export class AppComponent{
   
   ngOnInit(){
     this.myObservable = of(this.d).pipe(delay(3000))
+
+   
   }
 
 //bind model class of details
   detail : Detail[] = [];
   
+
+
 }
 
 

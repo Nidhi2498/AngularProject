@@ -1,4 +1,5 @@
-export class Student {
+export class Customer {
+    public id!: number;
     public name!: string;
     public rollno!: number;
     public address! : string;

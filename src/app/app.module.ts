@@ -13,6 +13,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { AddformComponent } from './reactiveform/addform/addform.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
     ProductCreateComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    ReactiveformComponent
+    ReactiveformComponent,
+    AddformComponent
   ],
   imports: [
     BrowserModule,

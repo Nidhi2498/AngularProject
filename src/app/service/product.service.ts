@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseURL = 'http://localhost:8080/api/products'; 
+const baseURL = 'http://localhost:4200'; 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductService {
 
   constructor(private httpClient : HttpClient) { }
@@ -23,7 +21,7 @@ export class ProductService {
     return this.httpClient.post(baseURL, data);
   }
 
-  addResource(data : any) : Observable<any>{
+  addStudent(data : any) : Observable<any>{
     return this.httpClient.post(baseURL, data);
   }
 }
