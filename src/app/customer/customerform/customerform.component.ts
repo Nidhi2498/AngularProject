@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CustomerService } from '../customer.service';
-import { Customer } from '../customer.model';
+import { Action, Customer } from '../customer.model';
 
 @Component({
   selector: 'app-customerform',
@@ -11,47 +11,17 @@ import { Customer } from '../customer.model';
 })
 export class CustomerformComponent implements OnInit {
 
-  baseurl = 'http://localhost:app/api/reviews';
+  baseurl = 'http://localhost:4200/';
   customerFormGroup!: FormGroup;
-  isSubmitted = false;
-  error: any;
+  public customer : Customer[] = []; 
+  actionDetail = Action;  //enum variable declaration
+  public id! : number; //Id is provided for delete customer in html
 
   constructor(private fb: FormBuilder,
-    private customerService: CustomerService,
+    private customerService: CustomerService, 
     private http : HttpClient
-  ) { }
-
-  public skillGroup() {
-    return new FormGroup({
-      title1: new FormControl(),
-      title2: new FormControl()
-    })
-  }
-
-  getskillarray() {
-    return this.customerFormGroup.get('skill') as FormArray
-  }
-
-  addskillgroup() {
-    const addskill = this.customerFormGroup.get('skill') as FormArray
-    addskill.push(this.skillGroup())
-  }
-
-  onSubmit() {
-    console.log(this.customerFormGroup.value)
-    this.addCustomer();
-  }
-
-
-  public addCustomer() {
-    this.customerService.addCustomer(this.customerFormGroup.value).subscribe((value) => {
-      console.log(value)
-    })
-  }
-
-
-
-  ngOnInit(): void {
+  ) { 
+    let d= Action.EDIT_ACTION;
     this.customerFormGroup = this.fb.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -63,42 +33,70 @@ export class CustomerformComponent implements OnInit {
     })
   }
 
-  get _student(){
-    return this.customerFormGroup.controls;
+  
+  public skillGroup() {
+    return new FormGroup({
+      title1: new FormControl(),
+      title2: new FormControl()
+    })
   }
 
-  public res = [];
+  //get skill data from formGroup
+  getskillarray() {
+    return this.customerFormGroup.get('skill') as FormArray
+  }
+
+  //Multiple skill added
+  addskillgroup() {
+    const addskill = this.customerFormGroup.get('skill') as FormArray
+    addskill.push(this.skillGroup())
+  }
+
+  // //Submit click event 
+  // onSubmit() {
+  //   console.log(this.customerFormGroup.value)
+  // }
+
+  ngOnInit(): void {
+    
+  }
+  //get customer data
+  getCustomer(){
+    debugger
+      this.customerService.getCustomer().subscribe((data:Customer[]) =>{
+      this.customer = data
+    })
+  }
+  
+
+  //Add new customer
   Save(){
     debugger
-    this.isSubmitted = true;
-    if (this.customerFormGroup.invalid)
-    {
-      return;
-    }
-    else{
-      let id = this.customerFormGroup.controls.id.value;
-      if(!id){
-         let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        this.http.post<Customer>(this.baseurl+'crud_customer', this.customerFormGroup.value).subscribe(response =>
-        {
-          console.log(response)
-          alert("Customer added successfully");
-          this.Reset();
-        });
-      }
-    }
+    this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
+      alert("Customer added successfully");
+    })
+        
   }
 
-  // this.http.post('http://localhost:app/api/reviews', JSON.stringify(review), {headers: headers})
-  // .subscribe(res => {
-  //   console.log(res.json());
-  // });
-  Reset(){
-
-
+  //edit customer
+  editCustomer(){
+    debugger
+    this.customerService.editCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
+     debugger
+     alert("Customer updated successfully")
+    })
+    
   }
 
-}
+  //delete customer
+  deleteCustomer(id:number){
+    debugger
+    this.customerService.deleteCustomer(id).subscribe((item:number)=>{
+      alert("Customer deleted successfully")
+      this.getCustomer();
+    })
+  }
+
+ }
 
 

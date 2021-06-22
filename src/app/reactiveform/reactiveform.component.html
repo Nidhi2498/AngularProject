@@ -1,7 +1,7 @@
 <p>reactiveform works!</p>
 <div class="container">
     <h2>Student form</h2>
-    <form [formGroup]= "students" (ngSubmit)="onSubmit()">
+    <form  (ngSubmit)="onSubmit()">
         <div>
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name"  name="email" formControlName="name">
@@ -43,4 +43,3 @@
         </tbody>
     </table>
 </div>
-<router-outlet></router-outlet>

@@ -1,0 +1,52 @@
+{
+  "customer": [
+    {
+      "id": 2,
+      "name": "pqr",
+      "rollno": "55",
+      "address": "valsad",
+      "skill": [
+        {
+          "title": "writing",
+          "certification": "Handwriting Certification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "abc",
+      "rollno": 24,
+      "address": "dkfb",
+      "skill": [
+        {
+          "title": "reading",
+          "certification": "writing"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Nidhi",
+      "rollno": "24",
+      "address": "Daman",
+      "skill": [
+        {
+          "title1": "d",
+          "title2": "d"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "kiran",
+      "rollno": "55",
+      "address": "valsad",
+      "skill": [
+        {
+          "title1": "playing",
+          "title2": "playing"
+        }
+      ]
+    }
+  ]
+}

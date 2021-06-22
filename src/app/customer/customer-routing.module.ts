@@ -9,7 +9,7 @@ const routes: Routes = [
     redirectTo: 'form'
   },
   {
-    path: 'form',
+    path: '',
     component: CustomerformComponent
   }
 ];

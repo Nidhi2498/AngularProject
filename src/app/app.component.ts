@@ -70,10 +70,10 @@ export class AppComponent{
    //-----------------------------------------------------------------------------------------
   
   
-  // message1 : any;
-  // receivedMessage = ($event: any) => {
-  //   this.message = $event
-  // }
+  message1 : any;
+  receivedMessage = ($event: any) => {
+    this.message = $event
+  }
 
   
  //-----------------------------------------------------------------------------------------

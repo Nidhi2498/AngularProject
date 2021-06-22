@@ -10,3 +10,7 @@ export class Skill{
     public title!: string;
     public certification!:string;
 }
+
+export enum Action{
+    EDIT_ACTION = 'Update'
+}
