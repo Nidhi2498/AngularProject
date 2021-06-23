@@ -45,9 +45,9 @@ export class CustomerformComponent implements OnInit {
  
 
   //get skill data from formGroup
-  getskillarray() {
-    return this.customerFormGroup.get('skill') as FormArray
-  }
+  // getskillarray() {
+  //   return this.customerFormGroup.get('skill') as FormArray
+  // }
 
   //Multiple skill added
   addskillgroup() {
@@ -83,6 +83,7 @@ export class CustomerformComponent implements OnInit {
       debugger
       this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
       alert("Customer added successfully");
+      this.getCustomer()
     })
       
     }
@@ -96,7 +97,6 @@ export class CustomerformComponent implements OnInit {
      debugger
      
      this.customerFormGroup.patchValue(item) //bind data 
-     this.getCustomer()
      alert("Customer updated successfully")
     })
     

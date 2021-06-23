@@ -10,8 +10,9 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: CustomerformComponent
+    component: CustomerformComponent,
   }
+ 
 ];
 
 @NgModule({
