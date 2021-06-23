@@ -15,7 +15,8 @@ export class CustomerformComponent implements OnInit {
   customerFormGroup!: FormGroup;
   public customer : Customer[] = []; 
   actionDetail = Action;  //enum variable declaration
-  public id! : number; //Id is provided for delete customer in html
+  isSubmitted = false;
+ 
 
   constructor(private fb: FormBuilder,
     private customerService: CustomerService, 
@@ -41,6 +42,8 @@ export class CustomerformComponent implements OnInit {
     })
   }
 
+ 
+
   //get skill data from formGroup
   getskillarray() {
     return this.customerFormGroup.get('skill') as FormArray
@@ -52,16 +55,16 @@ export class CustomerformComponent implements OnInit {
     addskill.push(this.skillGroup())
   }
 
-  // //Submit click event 
-  // onSubmit() {
-  //   console.log(this.customerFormGroup.value)
-  // }
 
   ngOnInit(): void {
+    // this.customerFormGroup = this.fb.group({
+    //   acceptTerm: [false, Validators.requiredTrue]
+    // })
     
   }
+
   //get customer data
-  getCustomer(){
+  public getCustomer(){
     debugger
       this.customerService.getCustomer().subscribe((data:Customer[]) =>{
       this.customer = data
@@ -70,26 +73,37 @@ export class CustomerformComponent implements OnInit {
   
 
   //Add new customer
-  Save(){
+  public onSave(){
     debugger
-    this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
+    this.isSubmitted = true
+    if(this.customerFormGroup.invalid ){
+      return;
+    }
+    else{
+      debugger
+      this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
       alert("Customer added successfully");
     })
-        
+      
+    }
+      
   }
 
   //edit customer
-  editCustomer(){
+  public getCustomerId(id:number){
     debugger
-    this.customerService.editCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
+    this.customerService.editCustomer(id).subscribe((item:Customer)=>{
      debugger
+     
+     this.customerFormGroup.patchValue(item) //bind data 
+     this.getCustomer()
      alert("Customer updated successfully")
     })
     
   }
 
   //delete customer
-  deleteCustomer(id:number){
+  public deleteCustomer(id:number){
     debugger
     this.customerService.deleteCustomer(id).subscribe((item:number)=>{
       alert("Customer deleted successfully")
