@@ -8,15 +8,10 @@ import { Student } from './student.model';
 export class CommonService {
  
   constructor(private http:HttpClient){}
-  //student!: Student[];
   
-  // public addstudent(data:Student):Observable<Student>{
-  //   return this.http.post<Student>(`${url}student`, data);
-  // }
+  public getdata():Observable<any>
+  {
+    return this.http.get<any>('https://jsonplaceholder.typicode.com/users')
+  }
 
-  // public getStudent():Observable<Student>{
-  //   return this.http.get<Student>(url).pipe()
-     
-  // }
-  
 }

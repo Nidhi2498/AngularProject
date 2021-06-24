@@ -21,6 +21,9 @@ export class CustomerService {
   public editCustomer(data:number):Observable<Customer>{
     return this.httpClient.get<Customer>(`${this.baseURL}customer/${data}`)
   }
+  public upadteCustomer(data:Customer):Observable<Customer>{
+    return this.httpClient.put<Customer>(`${this.baseURL}customer/${data.id}`,data)
+  }
 
   public deleteCustomer(id:number):Observable<number>{
     return this.httpClient.delete<number>(`${this.baseURL}customer/${id}`)

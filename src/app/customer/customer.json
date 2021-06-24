@@ -1,51 +1,72 @@
 {
   "customer": [
     {
-      "id": 2,
-      "name": "pqr",
-      "rollno": "55",
-      "address": "valsad",
+      "id": 1,
+      "name": "pqr1",
+      "rollno": 551,
+      "address": "valsad1",
       "skill": [
         {
-          "title": "writing",
-          "certification": "Handwriting Certification"
+          "title1": "ff1",
+          "title2": "d1"
+        },
+        {
+          "title1": "d1",
+          "title2": "g1"
+        },
+        {
+          "title1": null,
+          "title2": null
         }
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "abc",
       "rollno": 24,
       "address": "dkfb",
       "skill": [
         {
-          "title": "reading",
-          "certification": "writing"
+          "title1": "reading",
+          "title2": "writing"
         }
       ]
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Nidhi",
       "rollno": "23",
       "address": "Daman",
       "skill": [
         {
           "title1": "playing",
-          "title2": "n"
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
         }
       ]
     },
     {
+      "id": 4,
       "name": "Jenu",
+      "rollno": 55,
       "address": "Valsad",
       "skill": [
         {
-          "title1": "ddd",
-          "title2": "ddd"
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
         }
-      ],
-      "id": 5
+      ]
     }
   ]
 }

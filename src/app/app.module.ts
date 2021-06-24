@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+// import { App1RoutingModule } from './app1-routing.module';
 
 
 @NgModule({
@@ -24,13 +25,13 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      {
-        path: '**',
-        component:Child2Component
-      }
-    ])
+    HttpClientModule
+    // RouterModule.forRoot([
+    //   {
+    //     path: '**',
+    //     component:Child2Component
+    //   }
+    // ])
   ],
   providers: [CommonService],
   bootstrap: [AppComponent]

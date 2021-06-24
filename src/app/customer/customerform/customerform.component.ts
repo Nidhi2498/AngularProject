@@ -13,16 +13,16 @@ export class CustomerformComponent implements OnInit {
 
   baseurl = 'http://localhost:4200/';
   customerFormGroup!: FormGroup;
-  public customer : Customer[] = []; 
+  public customer: Customer[] = [];
   actionDetail = Action;  //enum variable declaration
   isSubmitted = false;
- 
+
 
   constructor(private fb: FormBuilder,
-    private customerService: CustomerService, 
-    private http : HttpClient
-  ) { 
-    let d= Action.EDIT_ACTION;
+    private customerService: CustomerService,
+    private http: HttpClient
+  ) {
+    let d = Action.EDIT_ACTION;
     this.customerFormGroup = this.fb.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -34,7 +34,7 @@ export class CustomerformComponent implements OnInit {
     })
   }
 
-  
+
   public skillGroup() {
     return new FormGroup({
       title1: new FormControl(),
@@ -42,7 +42,7 @@ export class CustomerformComponent implements OnInit {
     })
   }
 
- 
+
 
   //get skill data from formGroup
   // getskillarray() {
@@ -60,57 +60,62 @@ export class CustomerformComponent implements OnInit {
     // this.customerFormGroup = this.fb.group({
     //   acceptTerm: [false, Validators.requiredTrue]
     // })
-    
+
   }
 
   //get customer data
-  public getCustomer(){
+  public getCustomer() {
     debugger
-      this.customerService.getCustomer().subscribe((data:Customer[]) =>{
+    this.customerService.getCustomer().subscribe((data: Customer[]) => {
       this.customer = data
     })
   }
-  
+
 
   //Add new customer
-  public onSave(){
+  public onSave() {
     debugger
     this.isSubmitted = true
-    if(this.customerFormGroup.invalid ){
+    if (this.customerFormGroup.invalid) {
       return;
     }
-    else{
+    else {
       debugger
-      this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item:Customer)=>{
-      alert("Customer added successfully");
-      this.getCustomer()
-    })
-      
+      if (this.customerFormGroup.value.id !== '' && this.customerFormGroup.value.id) {
+        this.customerService.upadteCustomer(this.customerFormGroup.value).subscribe((item: Customer) => {
+          alert("Customer added successfully");
+        })
+      } else {
+        this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item: Customer) => {
+          alert("Customer added successfully");
+        })
+      }
+
     }
-      
+
   }
 
   //edit customer
-  public getCustomerId(id:number){
+  public getCustomerId(id: number) {
     debugger
-    this.customerService.editCustomer(id).subscribe((item:Customer)=>{
-     debugger
-     
-     this.customerFormGroup.patchValue(item) //bind data 
-     alert("Customer updated successfully")
+    this.customerService.editCustomer(id).subscribe((item: Customer) => {
+      debugger
+      item.skill.map((col) => { this.addskillgroup() })
+      this.customerFormGroup.patchValue(item) //bind data 
+      alert("Customer updated successfully")
     })
-    
+
   }
 
   //delete customer
-  public deleteCustomer(id:number){
+  public deleteCustomer(id: number) {
     debugger
-    this.customerService.deleteCustomer(id).subscribe((item:number)=>{
+    this.customerService.deleteCustomer(id).subscribe((item: number) => {
       alert("Customer deleted successfully")
       this.getCustomer();
     })
   }
 
- }
+}
 
 

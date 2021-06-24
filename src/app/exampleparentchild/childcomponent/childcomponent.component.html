@@ -1,0 +1,19 @@
+<p>child Component !</p>
+<h3>Parent to child array of object examples</h3>
+<table border="1px">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let item of sendtochild">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.address}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<button (click)="onClickEvent()">SendtoParent</button>
+<button (click)="onSendData($event)">Senddata</button>

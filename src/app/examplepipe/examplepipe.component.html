@@ -1,0 +1,45 @@
+<p>examplepipe works!</p>
+<h2>Example of Pipes</h2>
+<br>
+
+<h4>Currency</h4>
+{{12345.67 | currency:'USD'}}
+<br>
+{{12345.67 | currency:'INR'}}
+<br>
+
+<h4>DatePipe</h4>
+{{dateval | date: 'short'}}
+<br>
+{{dateval | date: 'long'}}
+<br>
+{{dateval | date: 'medium'}}
+<br>
+
+<h4>Decimal</h4>
+{{5.123445 | number: '3.0-0'}}005
+<br>
+{{5.123445 | number: '3.4-5'}}
+//005.12345
+<br>
+
+<h4>Lowercase Pipe</h4>
+{{'ABCD' | lowercase}}
+<br>
+
+<h4>Uppercase Pipe</h4>
+{{'abcd' | uppercase}}
+<br>
+
+<h4>Percent Pipe</h4>
+{{0.2345 | percent}}
+<br>
+{{42 | percent:'4.1-4'}}
+<br>
+
+<h4>Slice Pipe</h4>
+{{[1,2,3,4,5] | slice:1:4}}
+<br>
+{{[1,2,3,4,5] | slice:2}}
+<br>
+{{[1,2,3,4,5] | slice:2:-2}}

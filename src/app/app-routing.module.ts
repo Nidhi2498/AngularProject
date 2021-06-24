@@ -20,7 +20,16 @@ const routes: Routes = [
   {
    path :'customer',
    loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
-  }
+  },
+  { 
+    path: 'examplepipe', 
+    loadChildren: () => import('./examplepipe/examplepipe.module').then(m => m.ExamplepipeModule)
+   },
+  { path: 'interpolationEx', loadChildren: () => import('./exampleinterpolation/exampleinterpolation.module').then(m => m.ExampleinterpolationModule) },
+  { path: 'parentchild', loadChildren: () => import('./exampleparentchild/exampleparentchild.module').then(m => m.ExampleparentchildModule) },
+  { path: 'switch', loadChildren: () => import('./exampleswitch/exampleswitch.module').then(m => m.ExampleswitchModule) },
+  { path: 'routing', loadChildren: () => import('./examplerouting/examplerouting.module').then(m => m.ExampleroutingModule) },
+  { path: 'observe', loadChildren: () => import('./exampleobserve/exampleobserve.module').then(m => m.ExampleobserveModule) }
   
 ];
 

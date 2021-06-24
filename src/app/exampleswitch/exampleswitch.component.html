@@ -1,0 +1,33 @@
+<p>exampleswitch works!</p>
+<h2>This is my original array</h2>
+<div>
+    <ul *ngFor="let item of data">
+        <li>{{item.id}}</li>
+        <li>{{item.name}}</li>
+        <li>{{item.currency}}</li>
+    </ul>
+</div>
+
+<h2>This is my filtered array</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Sr. No</th>
+            <th>Currency Name</th>
+            <th>Currency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let row of data">
+            <tr>
+                <ng-container [ngSwitch]="row.currency">
+                    <ng-container *ngSwitchCase="'INR'">
+                        <td>{{row.id}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.currency}}</td>
+                    </ng-container>
+                </ng-container>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

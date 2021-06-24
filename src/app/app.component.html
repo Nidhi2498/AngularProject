@@ -1,275 +1,30 @@
-<h2>CRUD Operations</h2>
-<div class="navbar-nav mr-auto">
-    <li class="nav-item">
-        <a routerLink="customer" class="nav-link">customer</a>
-    </li>
-</div>
+<h2>Examples</h2>
 
-
-
-<span>----------------------------------------------------------------------------------</span>
-<h1>Routing </h1>
-<a routerLink = "child1">Child1</a>
-<br><br>
-<a routerLink = "child2">Child2</a>
-<!-- <router-outlet></router-outlet> -->
-
-
-<!-- 
-<h2>Add update delete the list</h2>
-<form>
-    <div class="form-group">
-        <label for="fruitName" title="Name">Fruit Name:</label>
-
-        <input name="searchtext" class="form-control"  [(ngModel)]= "FruitName"/>
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary" type="submit"  (click) = "savefruits()">Submit</button>
-    </div>
-</form> 
-<p></p>
-<div class="table-responsive">
-    <table>
-        <thead>
-            <tr>
-                <th class="tableHead">Name of fruits</th>
-            </tr>
-        </thead>
-        <p></p>
-        <tbody>
-
-           </tbody>
-    </table>
-</div> -->
-<p></p>
-<span>------------------------------------------------------------------------------------------------</span>
-
-<h2>Display Array List </h2>
-{{ myarr }}
-<br>
-<span>------------------------------------------------------------------------------------------------</span>
-
-<!-- Increment and Decrement value on click event -->
-<h2>Increment or Decrement value</h2>
-Value = {{ Counter }}
-<p></p>
-<button (click)="increment()">Increment</button>
-<button (click)="decrement()">Decrement</button>
-<br>
-<span>------------------------------------------------------------------------------------------------</span>
-
-<h2>Add or Remove number </h2>
-{{ value }}
-<!-- Add or remove the number by using button -->
-<button (click)="add()">Add value</button>
-<button (click)="remove()">Remove Value</button>
-
-<p></p><br>
-<span>------------------------------------------------------------------------------------------------</span>
-<!-- Show array -->
-<h3>Parent</h3>
-{{employee}}
-
-<h3>Child1 {{message}}</h3>
-<app-child1 [customerDetails]="customer" (passData)= "message=$event"></app-child1>
-<p></p>
-<!-- //(messageEvent) = "receivedMessage($event)" -->
-
-
-<!-- https://stackblitz.com/edit/angular-forms-tdf?file=src%2Fapp%2Fapp.component.ts 
-https://www.devglan.com/angular/angular-8-crud-example-->
-
-<!-- <div *ngFor = "let row of data" >
-       <ul [ngSwitch] = "data"> :
-           <span>{{data}}</span>
-        </ul>
-</div>       -->
-<br>
-<span>------------------------------------------------------------------------------------------------</span>
-<h2>This is my original array</h2>
-<div>
-    <ul *ngFor="let item of data">
-        <li>{{item.id}}</li>
-        <li>{{item.name}}</li>
-        <li>{{item.currency}}</li>
-    </ul>
-</div>
-
-<h2>This is my filtered array</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Sr. No</th>
-            <th>Currency Name</th>
-            <th>Currency</th>
-        </tr>
-    </thead>
-    <tbody>
-        <ng-container *ngFor="let row of data">
-            <tr>
-                <ng-container [ngSwitch]="row.currency">
-                    <ng-container *ngSwitchCase="'INR'">
-                        <td>{{row.id}}</td>
-                        <td>{{row.name}}</td>
-                        <td>{{row.currency}}</td>
-                    </ng-container>
-                </ng-container>
-            </tr>
-        </ng-container>
-    </tbody>
-</table>
-
-
-<br>
-<span>------------------------------------------------------------------------------------------------</span>
-<!-- <div [ngClass]="flag? 'primary':'secondary'">
-    <h2>Text</h2>
-</div>
-<button (click)= "flag = !flag">Click here</button> -->
-<!-- <button (click)= "onChangeStyle($event)">Click Here</button>
-<app-child1 (Changeevent)= "onChangeStyle($event)"></app-child1>  -->
-<!-- <h2>
-    <span> Parent component</span> 
-</h2>
-<button *ngIf= "data" (click)= "onClick(value)">On Change</button>
-<pre></pre>
-<app-child1  [showDetails]= "Value"></app-child1>
- -->
-
-<h2>Example of Pipes</h2>
-<br>
-
-<h4>Currency</h4>
-{{12345.67 | currency:'USD'}}
-<br>
-{{12345.67 | currency:'INR'}}
-<br>
-
-<h4>DatePipe</h4>
-{{dateval | date: 'short'}}
-<br>
-{{dateval | date: 'long'}}
-<br>
-{{dateval | date: 'medium'}}
-<br>
-
-<h4>Decimal</h4>
-{{5.123445 | number: '3.0-0'}}005
-<br>
-{{5.123445 | number: '3.4-5'}}
-//005.12345
-<br>
-
-<h4>Lowercase Pipe</h4>
-{{'ABCD' | lowercase}}
-<br>
-
-<h4>Uppercase Pipe</h4>
-{{'abcd' | uppercase}}
-<br>
-
-<h4>Percent Pipe</h4>
-{{0.2345 | percent}}
-<br>
-{{42 | percent:'4.1-4'}}
-<br>
-
-<h4>Slice Pipe</h4>
-{{[1,2,3,4,5] | slice:1:4}}
-<br>
-{{[1,2,3,4,5] | slice:2}}
-<br>
-{{[1,2,3,4,5] | slice:2:-2}}
-
-<br><br>
-<!-- <head>Registration form</head>
-<div>
-    <form class="signup-form" action="/register" method="POST">
-        <div class="form-header">
-            <h1>Create Account</h1>
-        </div>
-        <div class="form-body">
-
-        </div>
-        <div class="form-footer">
-
-        </div>
-    </form>
-</div>
-<div class="form-body">
-    <div class="col-md-6">
-        <div>
-            <label for="firstname" class="label-title">Employee name :</label>
-            <input  type="text" id="firstname" class="form-input" required="required" />
-        </div>
-        <p></p>
-        <div>
-            <label for="lastname" class="label-title">Last name :</label>
-            <input type="text" id="lastname" class="form-input"  />
-        </div>
-        <div>
-            <button type="Save" class="btn" >Save</button>
-        </div>
-        <p></p>
-        <div class="col-md-6">
-            <table>
-                <thead>
-                    <th>Employee Name</th>
-                    <th></th> <th></th>
-                    <th>Employee Designation</th>
-            </thead>
-            </table>
-        </div>
-    </div>
-
-    
-</div> -->
-
-<span>------------------------------------------------------------------------------------------------</span>
-
-<h4>AsyncPipe</h4>
-{{name}}
-<p>Start editing</p>
-<p *ngFor = "let item of myObservable | async">
-    Id: {{item.id}}
-    Name : {{item.name}}
-    Age :{{item.age}}
-</p>
-<span>------------------------------------------------------------------------------------------------</span>
-
-<br>
-<h4>Two way data binding example</h4>
-<input [(ngModel)] = "databinding" type="text">
-{{databinding}}
-
-<br>
-<br>
-<span>------------------------------------------------------------------------------------------------</span>
-<br>
-<h2>CRUD Operation</h2>
 <div>
     <nav class="navbar navbar-expand navbar-dark  bg-dark">
         <a class = "navbar-brand"></a>
         <div class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a routerLink="products" class="nav-link">Products</a>
+                <a routerLink="customer" class="nav-link">customer</a>
             </li>
             <li class="nav-item">
-                <a routerLink="create" class="nav-link">Create</a>
+                <a routerLink="interpolationEx" class="nav-link">Interpolation</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="parentchild" class="nav-link">parentchild</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="switch" class="nav-link">switch</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="routing" class="nav-link">routing</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="observe" class="nav-link">ObserveExp</a>
             </li>
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <!-- <router-outlet></router-outlet> -->
-    </div>
-</div>
-
-<span>------------------------------------------------------------------------------------------------</span>
-<br>
-<div *ngFor = "let row of detail">
-    {{row.id}}
-    {{row.name}}
 </div>
 
 <router-outlet></router-outlet>

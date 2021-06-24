@@ -7,8 +7,8 @@ export class Customer {
 }
 
 export class Skill{
-    public title!: string;
-    public certification!:string;
+    public title1!: string;
+    public title2!:string;
 }
 
 export enum Action{
