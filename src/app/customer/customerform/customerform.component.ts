@@ -34,20 +34,13 @@ export class CustomerformComponent implements OnInit {
     })
   }
 
-
+  //Declare method for skill array  
   public skillGroup() {
     return new FormGroup({
       title1: new FormControl(),
       title2: new FormControl()
     })
   }
-
-
-
-  //get skill data from formGroup
-  // getskillarray() {
-  //   return this.customerFormGroup.get('skill') as FormArray
-  // }
 
   //Multiple skill added
   addskillgroup() {
@@ -57,13 +50,10 @@ export class CustomerformComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.customerFormGroup = this.fb.group({
-    //   acceptTerm: [false, Validators.requiredTrue]
-    // })
 
   }
 
-  //get customer data
+  //get All customer data
   public getCustomer() {
     debugger
     this.customerService.getCustomer().subscribe((data: Customer[]) => {
@@ -72,18 +62,16 @@ export class CustomerformComponent implements OnInit {
   }
 
 
-  //Add new customer
+  //Add new customer and update the customer
   public onSave() {
-    debugger
     this.isSubmitted = true
     if (this.customerFormGroup.invalid) {
       return;
     }
     else {
-      debugger
       if (this.customerFormGroup.value.id !== '' && this.customerFormGroup.value.id) {
-        this.customerService.upadteCustomer(this.customerFormGroup.value).subscribe((item: Customer) => {
-          alert("Customer added successfully");
+        this.customerService.updateCustomer(this.customerFormGroup.value).subscribe((item: Customer) => {
+          alert("Customer updated successfully");
         })
       } else {
         this.customerService.addCustomer(this.customerFormGroup.value).subscribe((item: Customer) => {
@@ -95,10 +83,10 @@ export class CustomerformComponent implements OnInit {
 
   }
 
-  //edit customer
+  //Get customer by Id
   public getCustomerId(id: number) {
     debugger
-    this.customerService.editCustomer(id).subscribe((item: Customer) => {
+    this.customerService.geteditCustomerbyId(id).subscribe((item: Customer) => {
       debugger
       item.skill.map((col) => { this.addskillgroup() })
       this.customerFormGroup.patchValue(item) //bind data 

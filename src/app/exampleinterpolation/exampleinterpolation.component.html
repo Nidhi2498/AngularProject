@@ -1,12 +1,12 @@
 <p>exampleinterpolation works!</p>
 
-<h2>Display Array List </h2>
+<h3>Display Array List </h3>
 {{ myarr }}
 <br>
 <span>------------------------------------------------------------------------------------------------</span>
 
 <!-- Increment and Decrement value on click event -->
-<h2>Increment or Decrement value</h2>
+<h3>Increment or Decrement value</h3>
 Value = {{ Counter }}
 <p></p>
 <button (click)="increment()">Increment</button>
@@ -22,7 +22,7 @@ Value = {{ Counter }}
 <button (click)="remove()">Remove Value</button>
 
 <!-- //Async Pipe Example -->
-<h4>AsyncPipe</h4>
+<h3>AsyncPipe</h3>
 {{name}}
 <p>Start editing</p>
 <p *ngFor = "let item of myObservable | async">
@@ -33,7 +33,7 @@ Value = {{ Counter }}
 <span>------------------------------------------------------------------------------------------------</span>
 
 <br>
-<h4>Two way data binding example</h4>
+<h3>Two way data binding example</h3>
 <input [(ngModel)] = "databinding" type="text">
 {{databinding}}
 

@@ -55,7 +55,7 @@
     {
       "id": 4,
       "name": "Jenu",
-      "rollno": 55,
+      "rollno": 23,
       "address": "Valsad",
       "skill": [
         {
@@ -65,6 +65,10 @@
         {
           "title1": "playing",
           "title2": "playing"
+        },
+        {
+          "title1": null,
+          "title2": null
         }
       ]
     }

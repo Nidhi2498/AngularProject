@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'parentchild', loadChildren: () => import('./exampleparentchild/exampleparentchild.module').then(m => m.ExampleparentchildModule) },
   { path: 'switch', loadChildren: () => import('./exampleswitch/exampleswitch.module').then(m => m.ExampleswitchModule) },
   { path: 'routing', loadChildren: () => import('./examplerouting/examplerouting.module').then(m => m.ExampleroutingModule) },
-  { path: 'observe', loadChildren: () => import('./exampleobserve/exampleobserve.module').then(m => m.ExampleobserveModule) }
+  { path: 'observe', loadChildren: () => import('./exampleobserve/exampleobserve.module').then(m => m.ExampleobserveModule) },
+  { path: 'examplerxjs', loadChildren: () => import('./examplerxjs/examplerxjs.module').then(m => m.ExamplerxjsModule) }
   
 ];
 
