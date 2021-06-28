@@ -48,6 +48,7 @@
                   "maximumError": "4kb"
                 }
               ],
+              
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -56,6 +57,7 @@
               ],
               "outputHashing": "all"
             },
+          
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -70,9 +72,6 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "qa": {
-              "browserTarget": "test-app:build:qa"
-            },
             "production": {
               "browserTarget": "test-app:build:production"
             },

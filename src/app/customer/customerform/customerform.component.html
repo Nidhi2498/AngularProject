@@ -22,9 +22,14 @@
         <label for="pwd">Address:</label>
         <input type="text" class="form-control" id="address"  name="address" formControlName="address">
       </div>
+      <div class="form-control">
+        <label for="gender">Gender:</label><br>
+        <input type="radio" name="gender" formControlName="gender" value="male" >Male
+        <input type="radio" name="gender" formControlName="gender" value="female">Female
+        </div>
       <div formArrayName="skill">
               <div class="form-label">Skill: </div> 
-              <button (click)="addskillgroup()">Add</button>
+              <button class="btn btn-primary" (click)="addskillgroup()">Add textbox</button>
                 <ng-container *ngFor="let item of customerFormGroup.value.skill; let i=index"; [formGroupName]="i">
                     <div class="form-control">
                         <label class="form-label">title1</label>
@@ -40,7 +45,8 @@
       <div class="checkbox">
         <button type="submit" class="btn btn-success" (click)="onSave()">Save</button>
         <span *ngIf = "isSubmitted"></span>
-        <button type="submit" class="btn btn-danger" (click)= "getCustomer()">List</button>
+        <button type="submit" class="btn btn-danger" (click)="getCustomer()">List</button>
+        <button type="reset" class="btn btn-primary" (click)="onReset()">Reset</button>
       </div>
     </form>
   </div>
@@ -48,13 +54,14 @@
   </div>
 </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
 <table class="table table-striped">
   <thead>
     <th>SRNO</th>
     <th>Name</th>
     <th>Rollno</th>
     <th>Address</th>
+    <th>Gender</th>
     <th>Skill</th>
     <th>EditDeleteOPeration</th>
   </thead>
@@ -64,6 +71,7 @@
       <td>{{item.name}}</td>
       <td>{{item.rollno}}</td>
       <td>{{item.address}}</td>
+      <td>{{item.gender}}</td>
       <td>
         <ng-container *ngFor= "let skillItem of item.skill">
           {{skillItem.title1}},

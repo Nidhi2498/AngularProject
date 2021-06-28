@@ -3,6 +3,7 @@ export class Customer {
     public name!: string;
     public rollno!: number;
     public address! : string;
+    public gender! : string;
     public skill! : Skill[];
 }
 

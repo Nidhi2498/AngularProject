@@ -2,9 +2,10 @@
   "customer": [
     {
       "id": 1,
-      "name": "pqr1",
-      "rollno": 551,
-      "address": "valsad1",
+      "name": "Kashiyab",
+      "rollno": 55,
+      "address": "valsad",
+      "gender": "male",
       "skill": [
         {
           "title1": "ff1",
@@ -13,30 +14,44 @@
         {
           "title1": "d1",
           "title2": "g1"
-        },
-        {
-          "title1": null,
-          "title2": null
         }
       ]
     },
     {
       "id": 2,
-      "name": "abc",
-      "rollno": 24,
-      "address": "dkfb",
+      "name": "riddhi",
+      "rollno": 12,
+      "address": "valsad",
+      "gender": "female",
       "skill": [
         {
           "title1": "reading",
           "title2": "writing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": null,
+          "title2": null
+        },
+        {
+          "title1": null,
+          "title2": null
         }
       ]
     },
     {
       "id": 3,
       "name": "Nidhi",
-      "rollno": "23",
+      "rollno": "24",
       "address": "Daman",
+      "gender": "female",
       "skill": [
         {
           "title1": "playing",
@@ -49,26 +64,6 @@
         {
           "title1": "playing",
           "title2": "playing"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Jenu",
-      "rollno": 23,
-      "address": "Valsad",
-      "skill": [
-        {
-          "title1": "playing",
-          "title2": "playing"
-        },
-        {
-          "title1": "playing",
-          "title2": "playing"
-        },
-        {
-          "title1": null,
-          "title2": null
         }
       ]
     }

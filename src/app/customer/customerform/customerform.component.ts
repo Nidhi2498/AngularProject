@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CustomerService } from '../customer.service';
 import { Action, Customer } from '../customer.model';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'app-customerform',
@@ -12,11 +13,12 @@ import { Action, Customer } from '../customer.model';
 export class CustomerformComponent implements OnInit {
 
   baseurl = 'http://localhost:4200/';
-  customerFormGroup!: FormGroup;
+  public customerFormGroup: FormGroup;
   public customer: Customer[] = [];
   actionDetail = Action;  //enum variable declaration
   isSubmitted = false;
-
+  public maleSubject = new BehaviorSubject('male');
+  public femaleSubject = new BehaviorSubject('female');
 
   constructor(private fb: FormBuilder,
     private customerService: CustomerService,
@@ -28,6 +30,7 @@ export class CustomerformComponent implements OnInit {
       name: ['', [Validators.required]],
       rollno: ['', [Validators.pattern(/^[0-9]\d*$/)]],
       address: ['', [Validators.required]],
+      gender:[''],
       skill: this.fb.array([
         this.skillGroup()
       ]),
@@ -48,7 +51,24 @@ export class CustomerformComponent implements OnInit {
     addskill.push(this.skillGroup())
   }
 
+  // removeskillgroup() {
+  //   const addskill = this.customerFormGroup.get('skill') as FormArray
+  //   addskill.reset(this.skillGroup())
+  // }
 
+  public changeOnClick(event: any) : void{
+    if(this.customerFormGroup.value.gender == "male"){
+      this.maleSubject.next(event.target.value)
+    }
+    else{
+      this.femaleSubject.next(event.target.value)
+    }
+  }
+
+  public onReset(){
+    this.customerFormGroup == null
+  }
+ 
   ngOnInit(): void {
 
   }
@@ -89,6 +109,7 @@ export class CustomerformComponent implements OnInit {
     this.customerService.geteditCustomerbyId(id).subscribe((item: Customer) => {
       debugger
       item.skill.map((col) => { this.addskillgroup() })
+      // item.gender.map((gen)=> {this.gender.target(value)})
       this.customerFormGroup.patchValue(item) //bind data 
       alert("Customer updated successfully")
     })
