@@ -1,0 +1,71 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "name": "Kashiyab",
+      "rollno": 55,
+      "address": "valsad",
+      "gender": "male",
+      "skill": [
+        {
+          "title1": "ff1",
+          "title2": "d1"
+        },
+        {
+          "title1": "d1",
+          "title2": "g1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "riddhi",
+      "rollno": 12,
+      "address": "valsad",
+      "gender": "female",
+      "skill": [
+        {
+          "title1": "reading",
+          "title2": "writing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": null,
+          "title2": null
+        },
+        {
+          "title1": null,
+          "title2": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Nidhi",
+      "rollno": "24",
+      "address": "Daman",
+      "gender": "female",
+      "skill": [
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        },
+        {
+          "title1": "playing",
+          "title2": "playing"
+        }
+      ]
+    }
+  ]
+}

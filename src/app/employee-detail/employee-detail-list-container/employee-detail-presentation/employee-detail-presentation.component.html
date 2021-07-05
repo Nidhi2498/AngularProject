@@ -1,0 +1,19 @@
+<h3>EmployeeList</h3>
+<table class="table table-striped">
+    <thead>
+        <th>Emp_Id</th>
+        <th>Emp_Name</th>
+        <th>Salary</th>
+        <th>IsGreaterSalary</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employeeData">
+            <td>{{employee.empId}}</td>
+            <td>{{employee.empName}}</td>
+            <td [style.color]="employee.salary>= 10000? 'blue':'black'">{{employee.salary}}</td>
+            <td>{{employee.isGreaterSalary}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- [style.color]="employee.salary>= 10000? 'blue':'black'" -->

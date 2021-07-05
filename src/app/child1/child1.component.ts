@@ -12,8 +12,12 @@ export class Child1Component implements OnInit {
   //@Output() 
   @Input() showDetails : any;
   @Output() passData = new EventEmitter<any>();
-  @Input() changeStyles : any;
+  @Input() Changeevent : any;
   
+  fireEvents(){
+    this.passData.emit('Code evaluate by child')
+  }
+
   shifts: any = [
     {color: 'red'},
     {color: 'green'},
@@ -26,9 +30,11 @@ export class Child1Component implements OnInit {
     {id:2, name:"abc"},
     {id:3, name:"abc"},
   ]
-  this.passData.emit(arr1)
+ 
   }
   
   ngOnInit(): void {}
+  
+
   
 }

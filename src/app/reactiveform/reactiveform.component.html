@@ -1,0 +1,45 @@
+<p>reactiveform works!</p>
+<div class="container">
+    <h2>Student form</h2>
+    <form  (ngSubmit)="onSubmit()">
+        <div>
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name"  name="email" formControlName="name">
+        <span *ngIf="students.controls.name.touched && !students.controls.name.valid">This Field is required</span>
+      </div>
+      <div>
+        <label for="pwd">Roll No:</label>
+        <input  class="form-control" id="rollno"  name="rollno" formControlName="rollno">
+        <span *ngIf="students.controls.rollno.valid">Only Digit is required</span>
+      </div>
+      <div>
+        <label for="pwd">Address:</label>
+        <input type="text" class="form-control" id="address"  name="address" formControlName="address">
+      </div>
+      <div formArrayName="skill">
+              <div class="form-label">Skill: </div> 
+              <button (click)="addskillgroup()">Add</button>
+                <ng-container *ngFor="let item of students.value.skill; let i=index"; [formGroupName]="i">
+                    <div>
+                        <label class="form-label">title1</label>
+                        <input type="text" class="form-control" id="skill" formControlName="title1">
+                    </div>
+                    <div>
+                        <label class="form-label">title2</label>
+                        <input type="text" class="form-control" id="skill"  formControlName="title2">
+                    </div>
+                </ng-container>
+      </div>
+      <div class="checkbox">
+        <button type="submit" class="btn btn-primary" routerLink="create">Submit</button>
+      </div>
+    </form>
+    <table>
+        <thead>Name</thead>
+        <th>Roll No</th>
+        <th>Address</th>
+        <th>Skill</th>
+        <tbody>
+        </tbody>
+    </table>
+</div>

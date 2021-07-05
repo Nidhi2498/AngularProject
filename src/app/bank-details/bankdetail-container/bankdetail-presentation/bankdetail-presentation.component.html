@@ -1,0 +1,164 @@
+<h4 align="center"><b><u>Bank Detail Form</u></b></h4>
+<br>
+<div align="center">
+<form class="form-control" [formGroup]= "accountFormGroup">
+    <div class="form-group row">
+        <div class="col-md-4" align="left">
+            <b><label class="col-md-6 control-label">Account Number:</label></b>
+            <input type="text" class="form-control" formControlName ="account_no">
+                <span *ngIf="(accountFormGroup.controls.account_no.touched || accountFormGroup.controls.account_no.dirty || isSubmitted)
+                && accountFormGroup.controls.account_no.errors?.required">
+                Please enter Account Number</span>
+                <span *ngIf="accountFormGroup.controls.account_no.touched && accountFormGroup.controls.account_no.errors?.pattern">
+                Please enter character and number only
+               </span>
+                <span *ngIf="accountFormGroup.controls.account_no.touched && accountFormGroup.controls['account_no'].hasError('minlength')">
+                    Account number length should be in between (5-15)
+                </span>
+                <span *ngIf="accountFormGroup.controls.account_no.touched && accountFormGroup.controls['account_no'].hasError('maxlength')">
+                    Account number length should be in between (5-15)
+                </span>
+        </div>
+        <div class="col-md-4" align="left">
+            <b><label class="col-md-6 control-label">Account Holder Name:</label></b>
+            <input type="text" class="form-control" formControlName="account_name">
+            <span *ngIf="(accountFormGroup.controls.account_name.touched || accountFormGroup.controls.account_name.dirty || isSubmitted)
+            && accountFormGroup.controls.account_name.errors?.required">
+           Please enter Account Holder Name</span>
+           <span *ngIf="accountFormGroup.controls.account_name.touched && accountFormGroup.controls.account_name.errors?.pattern">
+            Please enter character only</span>
+            <br>
+        </div>
+    
+    </div>
+    <div class="form-group row">
+        <div class="col-md-4" align="left">
+            <b><label class="col-md-6 control-label">Email Id:</label></b>
+            <input type="text" class="form-control" formControlName="email_id" >
+            <span *ngIf="(accountFormGroup.controls.email_id.touched || accountFormGroup.controls.email_id.dirty || isSubmitted)
+                && accountFormGroup.controls.account_no.errors?.required">
+                Please enter appropriate Email id</span>
+           <span *ngIf="accountFormGroup.controls.email_id.touched && accountFormGroup.controls.email_id.errors?.email">
+               Please enter valid  Email id</span>
+        </div>
+
+        <div class="col-md-4" align="left">
+            <b><label class="col-md-6 control-label">Phone Number:</label></b>
+            <input type="text" class="form-control" formControlName="phone_no">
+            <span *ngIf="(accountFormGroup.controls.phone_no.touched || accountFormGroup.controls.phone_no.dirty || isSubmitted)
+            && accountFormGroup.controls.account_no.errors?.required">
+                Please enter only number</span>
+            <span *ngIf="accountFormGroup.controls.phone_no.touched && accountFormGroup.controls['phone_no'].hasError('maxlength')">
+                Phone number should be 10 digit only </span>
+          
+            <br>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-4" align="left">
+             <b><label class="col-md-6 control-label">Bank Name:</label></b>
+            <select class="form-control" formControlName="bank_name">
+                <option>--------Select Bank------</option>
+                <option>HDFC</option>
+                <option>BOB</option>
+                <option>SBI</option>
+                <option>ICICI</option>
+                
+            </select>
+            <span *ngIf="accountFormGroup.controls.bank_name.touched">
+                Please select the bank
+            </span>
+        </div>
+        <div class="col-md-4" align="left">
+            <b> <label class="col-md-6 control-label">Gender:</label></b>
+            <br>
+            <input type="radio" name="gender"  value="male" formControlName="gender" >Male
+            <span></span>
+            <input type="radio" name="gender"  value="female" formControlName="gender">Female
+            <br>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4" align="left">
+                <br>
+                <b> <label class="col-md-6 control-label">Address:</label></b>
+                <textarea class="form-control" formControlName="address"></textarea>
+                <span *ngIf="(accountFormGroup.controls.address.touched || accountFormGroup.controls.address.dirty || isSubmitted)
+                && accountFormGroup.controls.address.errors?.required">
+                Please enter address </span>
+            </div>
+            <div class="col-md-4" align="left">
+                <br>
+                <b><label class="col-md-6 control-label">Basic Amount:</label></b>
+                <input type="text" class="form-control" formControlName="basic_amt" >
+                <span *ngIf="(accountFormGroup.controls.basic_amt.touched || accountFormGroup.controls.basic_amt.dirty || isSubmitted)
+                && accountFormGroup.controls.basic_amt.errors?.required">
+                Please enter number only</span>
+                <br>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4" align="left">
+            <b><label class="col-md-6 control-label">Currency:</label></b>
+            <select class="form-control" formControlName="currency">
+                <option>--------Select currency------</option>
+                <option>USD</option>
+                <option>INR</option>
+                <option>EURO</option>
+                <option>CAD</option>
+            </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-4" align="left">
+            <br>
+            <button style="margin:5px;" class="btn btn-primary" type="submit" (click)="btnSave($event)">Save</button>
+            <button style="margin:5px;" class="btn btn-danger" (click)="btnReset()">Reset</button>
+            <button style="margin:5px;" class="btn btn-success" (click)="btnListBankDetail()">List</button>
+            <br>
+        </div>
+    </div>
+</form>
+<div class="form-group row">
+    <div class="col-md-4" align="left">
+        <input type="text"  [formControl]="search" placeholder="Search...">
+    </div>
+</div>
+<h5><b><u>Show Bank Details</u></b></h5>
+<p></p>
+
+<table class="table table-striped">
+    <thead>
+        <th>Sr.NO</th>
+        <th>Account No</th>
+        <th>Account Holder Name</th>
+        <th>Email</th>
+        <th>Phone No</th>
+        <th>Bank Name</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Amt</th>
+        <th>Currency</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of accountbankDetail">
+            <td>{{row.id}}</td>
+            <td>{{row.account_no}}</td>
+            <td>{{row.account_name}}</td>
+            <td>{{row.email_id}}</td>
+            <td>{{row.phone_no}}</td>
+            <td>{{row.bank_name}}</td>
+            <td>{{row.gender}}</td>
+            <td>{{row.address}}</td>
+            <td>{{row.basic_amt| currency : 'USD'}}</td>
+            <td>
+                <button style="margin:5px;" class="btn btn-success" (click)="getBankDetailById(row.id)">Edit</button>
+                <button style="margin:5px;" class="btn btn-danger" (click)="deleteBankDetail(row.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<!-- ngClass="let item = {{row.gender}} == 'female'? {{row.basic_amt}}*0.20': {{row.basic_amt}}" -->

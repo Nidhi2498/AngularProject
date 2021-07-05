@@ -1,0 +1,9 @@
+<h3>Child to parent msg send</h3>
+{{message}}
+
+<div *ngFor = "let item of receivedata">
+  <li>Id:{{item.id}}</li>
+  <li>Name:{{item.name}}</li>
+</div>
+<app-childcomponent [sendtochild]="data" (sendtoParent)= "receivedmessage($event)" (sendData)= "receivedarray($event)"></app-childcomponent>
+

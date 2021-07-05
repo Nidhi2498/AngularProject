@@ -1,0 +1,99 @@
+<div class="col-md-12">
+  <h2>Angular CRUD Operation</h2>
+  </div>
+<div class="row">
+<div class="col-md-offset-1 col-md-5">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-body">
+    <form [formGroup]= "customerFormGroup" >
+        <div class="form-control">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name"  formControlName="name" >
+        <span *ngIf="customerFormGroup.controls.name.touched && customerFormGroup.controls.name.valid">
+         Name is required</span>
+      </div>
+      <div class="form-control">
+        <label for="pwd">Roll No:</label>
+        <input  class="form-control" type="number" name="rollno" formControlName="rollno">
+        <!-- <span *ngIf="customerFormGroup.controls.rollno.value.number">Only Digit is required</span> -->
+      </div>
+      <div class="form-control">
+        <label for="pwd">Address:</label>
+        <input type="text" class="form-control" id="address"  name="address" formControlName="address">
+      </div>
+      <div class="form-control">
+        <label for="gender">Gender:</label><br>
+        <input type="radio" name="gender" formControlName="gender" value="male" >Male
+        <input type="radio" name="gender" formControlName="gender" value="female">Female
+        </div>
+      <div formArrayName="skill">
+              <div class="form-label">Skill: </div> 
+              <button class="btn btn-primary" (click)="addskillgroup()">Add textbox</button>
+                <ng-container *ngFor="let item of customerFormGroup.value.skill; let i=index"; [formGroupName]="i">
+                    <div class="form-control">
+                        <label class="form-label">title1</label>
+                        <input type="text" class="form-control" id="skill" formControlName="title1" #title1>
+                    </div>
+                    <div class="form-control"> 
+                        <label class="form-label">title2</label>
+                        <input type="text" class="form-control" id="skill"  formControlName="title2" #title2>
+                    </div>
+                </ng-container>
+                <span  class="help-block">All Field is Required</span>
+      </div>
+      <div class="checkbox">
+        <button type="submit" class="btn btn-success" (click)="onSave()">Save</button>
+        <span *ngIf = "isSubmitted"></span>
+        <button type="submit" class="btn btn-danger" (click)="getCustomer()">List</button>
+        <button type="reset" class="btn btn-primary" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </div>
+    </div>
+  </div>
+</div>
+</div>
+<br><br>
+<div class="col-md-3">
+  <input type="text" class="form-control" placeholder="Search" [formControl]="search">
+</div>
+<br>
+<div class="col-md-10">
+<table class="table table-striped">
+  <thead>
+    <th>SRNO</th>
+    <th>Name</th>
+    <th>Rollno</th>
+    <th>Address</th>
+    <th>Gender</th>
+    <th>Skill</th>
+    <th>EditDeleteOPeration</th>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let item of customer" class="">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.rollno}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.gender}}</td>
+      <td>
+        <ng-container *ngFor= "let skillItem of item.skill">
+          {{skillItem.title1}},
+          {{skillItem.title2}}
+          
+        </ng-container>
+      </td>
+      <td></td>
+      <td>
+        <button class="btn-success" (click)="getCustomerId(item.id)">Edit</button>
+        <button class="btn-danger" (click)="deleteCustomer(item.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<!-- {{actionDetail.EDIT_ACTION}} -->

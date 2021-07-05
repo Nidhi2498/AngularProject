@@ -1,0 +1,39 @@
+<p>exampleinterpolation works!</p>
+
+<h3>Display Array List </h3>
+{{ myarr }}
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
+
+<!-- Increment and Decrement value on click event -->
+<h3>Increment or Decrement value</h3>
+Value = {{ Counter }}
+<p></p>
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+<br>
+<span>------------------------------------------------------------------------------------------------</span>
+
+<h2>Add or Remove number </h2>
+{{ value }}
+<!-- Add or remove the number by using button -->
+
+<button  name="add" (click)="add()">Add value</button>
+<button (click)="remove()">Remove Value</button>
+
+<!-- //Async Pipe Example -->
+<h3>AsyncPipe</h3>
+{{name}}
+<p>Start editing</p>
+<p *ngFor = "let item of myObservable | async">
+    Id: {{item.id}}
+    Name : {{item.name}}
+    Age :{{item.age}}
+</p>
+<span>------------------------------------------------------------------------------------------------</span>
+
+<br>
+<h3>Two way data binding example</h3>
+<input [(ngModel)] = "databinding" type="text">
+{{databinding}}
+

@@ -1,0 +1,28 @@
+{
+    "employee":[
+        {
+                "empId":1,
+                "empName":"Nidhi",
+                "salary":12000,
+                "isGreaterSalary":"false"
+        },
+        {
+                "empId":2,
+                "empName":"Jinal",
+                "salary":7000,
+                "isGreaterSalary":"false"
+        },
+        {
+                "empId":3,
+                "empName":"Vaibhavi",
+                "salary":4000,
+                "isGreaterSalary":"false"
+        },
+        {
+                "empId":4,
+                "empName":"Mahika",
+                "salary":10000,
+                "isGreaterSalary":"false"
+        }
+    ]
+}

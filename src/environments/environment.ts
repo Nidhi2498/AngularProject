@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false
+  // name : '(DEV)',
+  // apiurl: 'http://devurl.com/'
 };
 
 /*
