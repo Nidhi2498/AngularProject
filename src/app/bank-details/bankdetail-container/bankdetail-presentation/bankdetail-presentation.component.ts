@@ -5,7 +5,6 @@ import { Bankdetails } from '../../bankdetails.model';
 import { BankserviceService } from '../../bankservice.service';
 import { BankdetailserviceService } from '../bankdetail-presenter/bankdetailservice.service';
 
-
 @Component({
   selector: 'app-bankdetail-presentation',
   templateUrl: './bankdetail-presentation.component.html',
@@ -17,12 +16,17 @@ export class BankdetailPresentationComponent implements OnInit {
   public accountFormGroup!: FormGroup;
 
   public bankdetails : Bankdetails[] = [];
-  public search = new FormControl()
+  public Search = new FormControl()
   private _accountbankDetail : Bankdetails[] = [];
+  account_name:any;
+
+  public addvalue! :any;
 
   public isSubmitted = false;
   @Output() add = new EventEmitter<any>();
   @Output() update = new EventEmitter<any>();
+  @Output() getbankdetail = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<any>();
 
   //Set method to set the value
   @Input() public set accountbankDetail(value:Bankdetails[]){
@@ -32,10 +36,14 @@ export class BankdetailPresentationComponent implements OnInit {
     }
   }
 
+
+
   //get method for getting bank details
   public get accountbankDetail(): Bankdetails[]{
     return this._accountbankDetail;
   }
+
+
 
   constructor(private formBuilder: FormBuilder, 
     private bankservice:BankserviceService,
@@ -47,20 +55,20 @@ export class BankdetailPresentationComponent implements OnInit {
         account_no : ['',  [Validators.required,  Validators.pattern('[a-zA-Z ]*'), Validators.minLength(5), Validators.maxLength(15) ]],
         account_name: ['', [Validators.required,  Validators.pattern('[a-zA-Z ]*')]],
         email_id : ['', [Validators.required, Validators.email]],
-        phone_no : ['', [Validators.required, Validators.maxLength(10)]],
-        bank_name : ['', [Validators.required]],
+        phone_no:['',[Validators.pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/),Validators.required]],
+        bank_name : ['---Select Bank---', [Validators.required]],
         gender : ['male'],
         address : ['', [Validators.required]],
         basic_amt : ['', [Validators.required]],
-        currency : ['', [Validators.required]]
+        currency : ['---Select Currency---', [Validators.required]]
 
     })
 
    }
 
+
    //get all bank details
    public btnListBankDetail(){
-     debugger
       return this.bankservice.getBankDetail();
    }
 
@@ -81,59 +89,49 @@ export class BankdetailPresentationComponent implements OnInit {
      }
    }
 
-  //  public phoneNumberMask(){
-  //       this.accountFormGroup = this.formBuilder.group({
-  //         phoneNumber:['', Validators.mask({mask:'(999)-999 9999' })], 
-  //     });
-  //  }
  
   
 
    //Get data by ID
    public getBankDetailById(id:number){
-     debugger
     this.bankservice.geteditBankDetailbyId(id).subscribe((data:Bankdetails)=>{
       //let result = this. femaleCondition();
       this.accountFormGroup.patchValue(data);
       alert("Bank detail added to form");
     })
-
    }
+
+    //Get all bank detail
+    public getAllBankDetails(){
+      this.getbankdetail.emit(this.accountFormGroup.value);
+    }
 
 
 
    //Delete data 
    public deleteBankDetail(id:number){
-     debugger
-     this.bankservice.deleteBankDetail(id).subscribe((data:number)=>{
-       alert("Bank detail deleted successfully");
-     })
+     this.delete.emit(this.accountFormGroup.value)
    }
 
 
    //Reset the form data
    public btnReset(){
-     debugger
       this.accountFormGroup.reset();
    }
 
 
-   //Get all bank detail
-   public getAllBankDetails(){
-        this.bankservice.getBankDetail().subscribe((data:Bankdetails[])=>{
-            this.bankdetails = data;
-        })
-   }
-
- 
+  
   ngOnInit(): void {
-    this.search.valueChanges.pipe(
-      debounceTime(1000),
-      switchMap((value: string)=> this.bankservice.getBankDetail(value)),
-    ).subscribe((filterData)=>{
-      // this.array = filterData
-      this.bankdetails=filterData;
-    })
+        //   this.bankservice.getBankDetail().subscribe((data)=>{
+        //     this.bankdetails = data;
+        // });
+
+        // this.search.valueChanges.pipe(
+        //   debounceTime(1000), 
+        //   filter((data) => this.searches
+        //   })
+           
+
   }
 
 }

@@ -1,18 +1,6 @@
 {
   "bankdetail": [
     {
-      "id": 1,
-      "account_no": 13004508765014,
-      "account_name": "Mahika Kansara",
-      "email_id": "mahikak2401@gmail.com",
-      "phone_no": 9858742514,
-      "bank_name": "BOB",
-      "gender": "female",
-      "address": "daman",
-      "basic_amt": "Rs12000",
-      "currency": "INR"
-    },
-    {
       "id": 2,
       "account_no": "20125202352011",
       "account_name": "vaibhavi patel",
@@ -22,7 +10,7 @@
       "gender": "female",
       "address": "vahgodia, Vadodara",
       "basic_amt": "13000",
-      "currency": "INR"
+      "currency": "USD"
     },
     {
       "id": 3,
@@ -39,13 +27,25 @@
     {
       "id": 4,
       "account_no": "7854123652bobb",
-      "account_name": "sweta patel",
-      "email_id": "sweta@gmail.com",
+      "account_name": "Pranav Patel",
+      "email_id": "pranav@gmail.com",
       "phone_no": "9856745241",
       "bank_name": "BOB",
-      "gender": "female",
-      "address": "vapi",
+      "gender": "male",
+      "address": "Pune",
       "basic_amt": "8000",
+      "currency": "INR"
+    },
+    {
+      "id": 5,
+      "account_no": "02563254125511",
+      "account_name": "Sanil Desai",
+      "email_id": "sanildesai123@gmail.com",
+      "phone_no": "9856478541",
+      "bank_name": "HDFC",
+      "gender": "male",
+      "address": "mumbai",
+      "basic_amt": "15000",
       "currency": "USD"
     }
   ]

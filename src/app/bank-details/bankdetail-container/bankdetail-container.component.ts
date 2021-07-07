@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Bankdetails } from '../bankdetails.model';
 import { BankserviceService } from '../bankservice.service';
@@ -17,6 +18,9 @@ export class BankdetailContainerComponent implements OnInit {
 
   }
 
+ 
+
+
   //Add new account detail
   public addBankDetail(data:Bankdetails){
     this.bankService.addBankDetail(data).subscribe((data:Bankdetails)=> {
@@ -33,6 +37,17 @@ export class BankdetailContainerComponent implements OnInit {
     
   }
 
+  //Get all bank details
+  public getBankDetail(){
+    this.bankService.getBankDetail();
+  }
+
+  //Delete bank account details
+  public deleteBankDetail(id:number){
+    this.bankService.deleteBankDetail(id).subscribe((data:number)=>{
+      alert("Bank detail deleted successfully");
+    })
+  }
 
 
   ngOnInit(): void {

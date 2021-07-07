@@ -44,7 +44,10 @@
 
         <div class="col-md-4" align="left">
             <b><label class="col-md-6 control-label">Phone Number:</label></b>
-            <input type="text" class="form-control" formControlName="phone_no">
+            <input type="text" class="form-control" formControlName="phone_no" >
+            <span *ngIf="accountFormGroup.controls.phone_no.touched && accountFormGroup.controls.phone_no.errors?.pattern">
+                Please enter character and number only
+               </span>
             <span *ngIf="(accountFormGroup.controls.phone_no.touched || accountFormGroup.controls.phone_no.dirty || isSubmitted)
             && accountFormGroup.controls.account_no.errors?.required">
                 Please enter only number</span>
@@ -122,7 +125,8 @@
 </form>
 <div class="form-group row">
     <div class="col-md-4" align="left">
-        <input type="text"  [formControl]="search" placeholder="Search...">
+        <input type="text"  class="form-control" name = "account_name" 
+        placeholder="Search..." [formControl] = "Search">
     </div>
 </div>
 <h5><b><u>Show Bank Details</u></b></h5>
@@ -142,7 +146,7 @@
         <th>Currency</th>
     </thead>
     <tbody>
-        <tr *ngFor="let row of accountbankDetail">
+        <tr *ngFor="let row of accountbankDetail" >
             <td>{{row.id}}</td>
             <td>{{row.account_no}}</td>
             <td>{{row.account_name}}</td>
@@ -151,7 +155,18 @@
             <td>{{row.bank_name}}</td>
             <td>{{row.gender}}</td>
             <td>{{row.address}}</td>
-            <td>{{row.basic_amt| currency : 'USD'}}</td>
+            <td *ngIf = "row.gender == 'female' else elseBlock">
+                <ng-container>
+                {{row.basic_amt * 20/100}} 
+                </ng-container>
+            </td>
+                <ng-template #elseBlock>
+                    <span *ngIf = "row.gender == 'male'"></span>
+                    {{row.basic_amt }}
+                </ng-template>
+
+           
+            <td>{{row.currency}}</td>
             <td>
                 <button style="margin:5px;" class="btn btn-success" (click)="getBankDetailById(row.id)">Edit</button>
                 <button style="margin:5px;" class="btn btn-danger" (click)="deleteBankDetail(row.id)">Delete</button>

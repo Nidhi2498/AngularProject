@@ -3,7 +3,7 @@ export class Bankdetails {
     account_no! : any;
     account_name! : string;
     email_id! : string;
-    phone_no! : number;
+    phone_no! : any;
     bank_name! : string;
     gender! : string;
     address!: string;
