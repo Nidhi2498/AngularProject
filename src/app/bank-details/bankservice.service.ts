@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/internal/operators/map';
 import { Bankdetails } from './bankdetails.model';
 
 @Injectable()
@@ -27,4 +28,31 @@ export class BankserviceService {
   public deleteBankDetail(id:number):Observable<number>{
     return this.httpClient.delete<number>(`${this.baseURL}bankdetail/${id}`)
   } 
+  public searchResult : any;
+    //Searching
+    public searchAccountName(term: any):Observable<any> {
+      if(term == "")
+      { 
+         console.log("Not defined value");
+         return emptyObservable();
+      }
+      else{
+        let params = {name: term}
+        return this.httpClient.get(this.baseURL, {params}).pipe(
+          map((response:any) => {
+            console.log(response);
+            return this.searchResult = response["items"]
+          })
+        )
+      }
+    }
+
+
+    public _searchEnteries(term:any): any{
+      return  this._searchEnteries(term)
+    }
 }
+function emptyObservable(): Observable<any> {
+  throw new Error('Function not implemented.');
+}
+

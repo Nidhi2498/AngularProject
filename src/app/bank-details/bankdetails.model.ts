@@ -5,8 +5,8 @@ export class Bankdetails {
     email_id! : string;
     phone_no! : any;
     bank_name! : string;
-    gender! : string;
+    gender! : any;
     address!: string;
-    basic_amt!: number;
+    basic_amt!: any;
     currency!: string;
 }

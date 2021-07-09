@@ -44,9 +44,9 @@
 
         <div class="col-md-4" align="left">
             <b><label class="col-md-6 control-label">Phone Number:</label></b>
-            <input type="text" class="form-control" formControlName="phone_no" >
+            <input type="text" class="form-control" formControlName="phone_no"  >Masking:{{numberMasking(number)}}
             <span *ngIf="accountFormGroup.controls.phone_no.touched && accountFormGroup.controls.phone_no.errors?.pattern">
-                Please enter character and number only
+                Please enter number only
                </span>
             <span *ngIf="(accountFormGroup.controls.phone_no.touched || accountFormGroup.controls.phone_no.dirty || isSubmitted)
             && accountFormGroup.controls.account_no.errors?.required">
@@ -125,8 +125,9 @@
 </form>
 <div class="form-group row">
     <div class="col-md-4" align="left">
-        <input type="text"  class="form-control" name = "account_name" 
-        placeholder="Search..." [formControl] = "Search">
+        <input  #input type="text"  class="form-control" name = "account_name" placeholder="Search..."
+         [(ngModel)]= "account_nameSearch">
+
     </div>
 </div>
 <h5><b><u>Show Bank Details</u></b></h5>
@@ -146,7 +147,7 @@
         <th>Currency</th>
     </thead>
     <tbody>
-        <tr *ngFor="let row of accountbankDetail" >
+        <tr *ngFor= "let row of accountbankDetail | accountNameFilter:account_nameSearch">
             <td>{{row.id}}</td>
             <td>{{row.account_no}}</td>
             <td>{{row.account_name}}</td>
@@ -155,16 +156,16 @@
             <td>{{row.bank_name}}</td>
             <td>{{row.gender}}</td>
             <td>{{row.address}}</td>
-            <td *ngIf = "row.gender == 'female' else elseBlock">
+            <td>{{row.basic_amt}}</td>
+            <!-- <td *ngIf = "row.gender == 'female' else elseBlock">
                 <ng-container>
-                {{row.basic_amt * 20/100}} 
+                {{ row.basic_amt * 0.2}} 
                 </ng-container>
-            </td>
-                <ng-template #elseBlock>
+            </td> -->
+                <!-- <ng-template #elseBlock>
                     <span *ngIf = "row.gender == 'male'"></span>
                     {{row.basic_amt }}
-                </ng-template>
-
+                </ng-template> -->     
            
             <td>{{row.currency}}</td>
             <td>

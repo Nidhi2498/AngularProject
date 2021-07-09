@@ -8,7 +8,9 @@ import { BankserviceService } from './bankservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BankdetailContainerComponent } from './bankdetail-container/bankdetail-container.component';
 import { BankdetailPresentationComponent } from './bankdetail-container/bankdetail-presentation/bankdetail-presentation.component';
-import { CurrencyPipe } from './pipes/currency.pipe';
+import { CurrencyPipe } from '@angular/common';
+import { CustomDirective } from './custom.directive';
+import { AccountNameFilterPipe } from './pipes/account-name-filter.pipe';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { CurrencyPipe } from './pipes/currency.pipe';
     BankDetailsComponent,
     BankdetailContainerComponent,
     BankdetailPresentationComponent,
-    CurrencyPipe
+    CustomDirective,
+    AccountNameFilterPipe
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,6 @@ import { CurrencyPipe } from './pipes/currency.pipe';
     HttpClientModule
   ],
 
-  providers: [BankserviceService]
+  providers: [BankserviceService, CurrencyPipe]
 })
 export class BankDetailsModule { }

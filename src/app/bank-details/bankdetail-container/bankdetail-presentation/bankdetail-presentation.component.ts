@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs/internal/Subject';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { Bankdetails } from '../../bankdetails.model';
 import { BankserviceService } from '../../bankservice.service';
 import { BankdetailserviceService } from '../bankdetail-presenter/bankdetailservice.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-bankdetail-presentation',
@@ -16,7 +18,7 @@ export class BankdetailPresentationComponent implements OnInit {
   public accountFormGroup!: FormGroup;
 
   public bankdetails : Bankdetails[] = [];
-  public Search = new FormControl()
+ 
   private _accountbankDetail : Bankdetails[] = [];
   account_name:any;
 
@@ -28,6 +30,12 @@ export class BankdetailPresentationComponent implements OnInit {
   @Output() getbankdetail = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
 
+  public bankaccountdetail = new Bankdetails
+
+  //Search by Account Holder name
+  public account_nameSearch:String = '';
+
+
   //Set method to set the value
   @Input() public set accountbankDetail(value:Bankdetails[]){
     if(value){
@@ -36,7 +44,25 @@ export class BankdetailPresentationComponent implements OnInit {
     }
   }
 
+  //Masking phone number
+  phone_no = new FormControl();
+  number : string = "9856231452"
+  public numberMasking(_number : string){
+    var mask = "";
+    if(_number){
+      for(let i=1; i<=_number.length; i++){
+        mask += "9";
+      }
+      return mask + _number.slice(10);
+    }
+    else{
+      return null;
+    }
+  }
 
+  
+
+  
 
   //get method for getting bank details
   public get accountbankDetail(): Bankdetails[]{
@@ -47,7 +73,8 @@ export class BankdetailPresentationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
     private bankservice:BankserviceService,
-    private bankservicePresenter : BankdetailserviceService
+    private bankservicePresenter : BankdetailserviceService,
+    private currencyPipe : CurrencyPipe
     ) 
     {
       this.accountFormGroup = this.formBuilder.group({
@@ -61,10 +88,39 @@ export class BankdetailPresentationComponent implements OnInit {
         address : ['', [Validators.required]],
         basic_amt : ['', [Validators.required]],
         currency : ['---Select Currency---', [Validators.required]]
+    });
 
-    })
+  }
 
-   }
+  ngOnInit() {
+
+    //use pipe to display currency
+    this.accountFormGroup.valueChanges.subscribe( form =>{
+      if(form.currency == "INR")
+      this.accountFormGroup.patchValue({
+        basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'INR',
+        'symbol', '1.0-0')}, {emitEvent : false});
+
+        else if(form.currency == "USD")
+        this.accountFormGroup.patchValue({
+          basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'USD',
+          'symbol', '1.0-0')}, {emitEvent : false});
+
+        else if(form.currency == "CAD")
+        this.accountFormGroup.patchValue({
+         basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'CAD',
+         'symbol', '1.0-0')}, {emitEvent : false});
+
+         else{
+          this.accountFormGroup.patchValue({
+            basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'EUR',
+            'symbol', '1.0-0')}, {emitEvent : false});
+         }
+      })
+    };
+    
+
+  
 
 
    //get all bank details
@@ -74,7 +130,6 @@ export class BankdetailPresentationComponent implements OnInit {
 
   
    //Form data save and edit from table
-   public result :any;
    public btnSave(data: any){
      if(this.accountFormGroup.value != null){
       this.isSubmitted = true;
@@ -121,18 +176,7 @@ export class BankdetailPresentationComponent implements OnInit {
 
 
   
-  ngOnInit(): void {
-        //   this.bankservice.getBankDetail().subscribe((data)=>{
-        //     this.bankdetails = data;
-        // });
-
-        // this.search.valueChanges.pipe(
-        //   debounceTime(1000), 
-        //   filter((data) => this.searches
-        //   })
-           
-
-  }
+  
 
 }
 

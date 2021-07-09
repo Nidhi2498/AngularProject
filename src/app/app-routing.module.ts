@@ -33,7 +33,9 @@ const routes: Routes = [
   { path: 'examplerxjs', loadChildren: () => import('./examplerxjs/examplerxjs.module').then(m => m.ExamplerxjsModule) },
   { path: 'employee-detail', loadChildren: () => import('./employee-detail/employee-detail.module').then(m => m.EmployeeDetailModule) },
   { path: 'exampleForkjoin', loadChildren: () => import('./example-forkjoin/example-forkjoin.module').then(m => m.ExampleForkjoinModule) },
-  { path: 'Bank-Details', loadChildren: () => import('./bank-details/bank-details.module').then(m => m.BankDetailsModule) }
+  { path: 'Bank-Details', loadChildren: () => import('./bank-details/bank-details.module').then(m => m.BankDetailsModule) },
+  { path: 'exampleInjectToken', loadChildren: () => import('./example-inject-token/example-inject-token.module').then(m => m.ExampleInjectTokenModule) },
+  { path: 'exampleDOMRender', loadChildren: () => import('./example-domrender/example-domrender.module').then(m => m.ExampleDOMRenderModule) }
 ];
 
 @NgModule({

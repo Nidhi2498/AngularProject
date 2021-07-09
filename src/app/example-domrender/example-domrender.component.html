@@ -1,0 +1,14 @@
+<p>ParentRender Component</p>
+<div #box>
+    <h3>My first Template Reference Page</h3>
+</div>
+<div>
+    <button style="margin:5px;" class="btn btn-success" (click)="onClickAdd()">Element Ref Add</button>
+    <button style="margin:5px;" class="btn btn-danger" (click)="onClickRemove()">Element Ref Add</button>
+</div>
+
+
+<p>Example 2</p>
+<app-childrender>
+    <p #childComponent>This is an child component</p>
+</app-childrender>

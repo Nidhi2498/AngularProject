@@ -18,23 +18,18 @@ export class BankdetailserviceService {
    public bindForm(){
      return new FormGroup({
       id: new FormControl(), 
-      
-     })
-
-    
-    
+      account_no : new FormControl(Validators.required, Validators.pattern('[a-zA-Z ]*')), 
+      account_name : new FormControl(Validators.required, Validators.pattern('[a-zA-Z ]*')),
+      email_id: new FormControl(Validators.required, Validators.email),
+      phone_no : new FormControl(Validators.required, Validators.pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/)),
+      bank_name : new FormControl(Validators.required),
+      gender: new FormControl('male'),
+      address: new FormControl(Validators.required),
+      basic_amt : new FormControl(Validators.required),
+      currency: new FormControl(Validators.required)
+     })    
 }
 
-// id:[''],
-// account_no : ['',  [Validators.required,  Validators.pattern('[a-zA-Z ]*'), Validators.minLength(5), Validators.maxLength(15) ]],
-// account_name: ['', [Validators.required,  Validators.pattern('[a-zA-Z ]*')]],
-// email_id : ['', [Validators.required, Validators.email]],
-// phone_no:['',[Validators.pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/),Validators.required]],
-// bank_name : ['---Select Bank---', [Validators.required]],
-// gender : ['male'],
-// address : ['', [Validators.required]],
-// basic_amt : ['', [Validators.required]],
-// currency : ['---Select Currency---', [Validators.required]]
 
     // public bankDetails(accountFormGroup: FormGroup) {
     //   if (accountFormGroup.valid) {

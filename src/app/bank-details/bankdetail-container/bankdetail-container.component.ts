@@ -18,6 +18,7 @@ export class BankdetailContainerComponent implements OnInit {
 
   }
 
+
  
 
 
