@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { TemplateTempOutletComponent } from './template-temp-outlet/template-temp-outlet.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
     Child1Component,
     Child2Component,
     ReactiveformComponent,
+    TemplateTempOutletComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,11 +8,11 @@ import { Subject } from 'rxjs/internal/Subject';
 export class BankdetailserviceService {
 
   //send data to another component presentation
-  public bankDetailsData : Subject<any> = new Subject();
-  public bankDetailsData$!: Observable<any>;
+  public bankDetailId : Subject<any> = new Subject();
+  public bankDetailsId$!: Observable<any>;
 
   constructor() {
-    this.bankDetailsData$ = this.bankDetailsData.asObservable();
+    this.bankDetailsId$ = this.bankDetailId.asObservable();
    }
 
    public bindForm(){
@@ -30,12 +30,17 @@ export class BankdetailserviceService {
      })    
 }
 
-
     // public bankDetails(accountFormGroup: FormGroup) {
     //   if (accountFormGroup.valid) {
     //     console.log('done');
-    //     this.bankDetailsData.next(accountFormGroup.value);
+    //     this.bankDetailId.next(accountFormGroup.value);
+    //   } else {
     //   }
-    // }
+    
+
+    public deletebankDetails(value : number) {
+      console.log('delete','value');
+      this.bankDetailId.next(value);
+    }
     
   }

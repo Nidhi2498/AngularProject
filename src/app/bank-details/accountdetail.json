@@ -9,7 +9,7 @@
       "bank_name": "SBI",
       "gender": "female",
       "address": "vahgodia, Vadodara",
-      "basic_amt": "$13,000",
+      "basic_amt": 13000,
       "currency": "USD"
     },
     {
@@ -21,8 +21,8 @@
       "bank_name": "BOB",
       "gender": "female",
       "address": "daman",
-      "basic_amt": "€5,000",
-      "currency": "EURO"
+      "basic_amt": 5000,
+      "currency": "EUR"
     },
     {
       "id": 4,
@@ -33,7 +33,7 @@
       "bank_name": "BOB",
       "gender": "male",
       "address": "Pune",
-      "basic_amt": "₹8,000",
+      "basic_amt": 8000,
       "currency": "INR"
     },
     {
@@ -45,8 +45,32 @@
       "bank_name": "HDFC",
       "gender": "male",
       "address": "mumbai",
-      "basic_amt": "CA$15,000",
+      "basic_amt": 15000,
       "currency": "CAD"
+    },
+    {
+      "id": 6,
+      "account_no": "00256321BOMM45",
+      "account_name": "Kiran Prajapati",
+      "email_id": "kiran.prajapati@gmail.com",
+      "phone_no": "9857456874",
+      "bank_name": "HDFC",
+      "gender": "female",
+      "address": "Ahmedabad, Gujarat",
+      "basic_amt": 20000,
+      "currency": "INR"
+    },
+    {
+      "id": 7,
+      "account_no": "hhjhjhj",
+      "account_name": "jkhljh",
+      "email_id": "hg@gg.cfg",
+      "phone_no": "(999) (999)-9999",
+      "bank_name": "BOB",
+      "gender": "male",
+      "address": "jlk",
+      "basic_amt": "15000",
+      "currency": "INR"
     }
   ]
 }

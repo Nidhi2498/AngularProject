@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {Child1Component} from './child1/child1.component'
 import {Child2Component} from './child2/child2.component'
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { TemplateTempOutletComponent } from './template-temp-outlet/template-temp-outlet.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,8 @@ const routes: Routes = [
     component:Child2Component
   },
   {
-    path : 'student',
-    component : ReactiveformComponent
+    path : 'template',
+    component : TemplateTempOutletComponent
   },
   {
    path :'customer',
@@ -34,8 +35,8 @@ const routes: Routes = [
   { path: 'employee-detail', loadChildren: () => import('./employee-detail/employee-detail.module').then(m => m.EmployeeDetailModule) },
   { path: 'exampleForkjoin', loadChildren: () => import('./example-forkjoin/example-forkjoin.module').then(m => m.ExampleForkjoinModule) },
   { path: 'Bank-Details', loadChildren: () => import('./bank-details/bank-details.module').then(m => m.BankDetailsModule) },
-  { path: 'exampleInjectToken', loadChildren: () => import('./example-inject-token/example-inject-token.module').then(m => m.ExampleInjectTokenModule) },
-  { path: 'exampleDOMRender', loadChildren: () => import('./example-domrender/example-domrender.module').then(m => m.ExampleDOMRenderModule) }
+  { path: 'exampleDOMRender', loadChildren: () => import('./example-domrender/example-domrender.module').then(m => m.ExampleDOMRenderModule) },
+  { path: 'use-class', loadChildren: () => import('./use-class/use-class.module').then(m => m.UseClassModule) }
 ];
 
 @NgModule({

@@ -1,0 +1,34 @@
+<ng-template #brands let-data>
+    <section class="brand">
+        <img src="https://picsum.photos/200" alt="image"/>
+        <h3>{{data}}</h3>
+    </section>
+
+</ng-template>
+<header>
+    <ng-container *ngTemplateOutlet="brands; context:mycontext"></ng-container>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+</header>
+<section>
+    <form >
+        <legend>
+            <hr>
+            Email:<input type="text" class="form-control">
+            Password:<input type="password" class="form-control">
+        </legend>
+    </form>
+</section>
+    
+
+<footer>
+    <ng-container *ngTemplateOutlet="brands; context: { $implicit:'Sign Up'}"></ng-container>
+    <p>Coypright info here &copy; 2021</p>
+</footer>
+

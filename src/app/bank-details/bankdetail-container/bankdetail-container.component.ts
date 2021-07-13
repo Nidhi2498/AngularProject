@@ -11,11 +11,10 @@ import { BankserviceService } from '../bankservice.service';
 })
 export class BankdetailContainerComponent implements OnInit {
   public bankdetail$!: Observable<any>;
+  public details : Bankdetails[] = [];
 
   constructor(private bankService:BankserviceService) { 
-    
     this.bankdetail$ = this.bankService.getBankDetail();
-
   }
 
 
@@ -38,11 +37,7 @@ export class BankdetailContainerComponent implements OnInit {
     
   }
 
-  //Get all bank details
-  public getBankDetail(){
-    this.bankService.getBankDetail();
-  }
-
+  
   //Delete bank account details
   public deleteBankDetail(id:number){
     this.bankService.deleteBankDetail(id).subscribe((data:number)=>{

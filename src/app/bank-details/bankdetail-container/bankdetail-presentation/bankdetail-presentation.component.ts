@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs/internal/Subject';
-import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Bankdetails } from '../../bankdetails.model';
 import { BankserviceService } from '../../bankservice.service';
 import { BankdetailserviceService } from '../bankdetail-presenter/bankdetailservice.service';
@@ -20,9 +18,8 @@ export class BankdetailPresentationComponent implements OnInit {
   public bankdetails : Bankdetails[] = [];
  
   private _accountbankDetail : Bankdetails[] = [];
-  account_name:any;
+ 
 
-  public addvalue! :any;
 
   public isSubmitted = false;
   @Output() add = new EventEmitter<any>();
@@ -30,7 +27,6 @@ export class BankdetailPresentationComponent implements OnInit {
   @Output() getbankdetail = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
 
-  public bankaccountdetail = new Bankdetails
 
   //Search by Account Holder name
   public account_nameSearch:String = '';
@@ -41,26 +37,21 @@ export class BankdetailPresentationComponent implements OnInit {
     if(value){
       this.bankdetails;
       this._accountbankDetail = value
+      //this.bankservicePresenter.bankDetails.pipe((data:any) => {
+
+      // })
     }
   }
 
-  //Masking phone number
-  phone_no = new FormControl();
-  number : string = "9856231452"
-  public numberMasking(_number : string){
-    var mask = "";
-    if(_number){
-      for(let i=1; i<=_number.length; i++){
-        mask += "9";
-      }
-      return mask + _number.slice(10);
-    }
-    else{
-      return null;
-    }
-  }
+ 
 
-  
+  //Get all data
+  public getBankDetail() {
+    debugger
+    this.bankservice.getBankDetail().subscribe((data: Bankdetails[]) => {
+      this.bankdetails = data
+    })
+  }
 
   
 
@@ -82,7 +73,7 @@ export class BankdetailPresentationComponent implements OnInit {
         account_no : ['',  [Validators.required,  Validators.pattern('[a-zA-Z ]*'), Validators.minLength(5), Validators.maxLength(15) ]],
         account_name: ['', [Validators.required,  Validators.pattern('[a-zA-Z ]*')]],
         email_id : ['', [Validators.required, Validators.email]],
-        phone_no:['',[Validators.pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/),Validators.required]],
+        phone_no:[null,[Validators.pattern('/^\(\d{3}\)\s\d{3}-\d{4}$/'),Validators.required]],
         bank_name : ['---Select Bank---', [Validators.required]],
         gender : ['male'],
         address : ['', [Validators.required]],
@@ -92,36 +83,10 @@ export class BankdetailPresentationComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+    ngOnInit() {
 
-    //use pipe to display currency
-    this.accountFormGroup.valueChanges.subscribe( form =>{
-      if(form.currency == "INR")
-      this.accountFormGroup.patchValue({
-        basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'INR',
-        'symbol', '1.0-0')}, {emitEvent : false});
-
-        else if(form.currency == "USD")
-        this.accountFormGroup.patchValue({
-          basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'USD',
-          'symbol', '1.0-0')}, {emitEvent : false});
-
-        else if(form.currency == "CAD")
-        this.accountFormGroup.patchValue({
-         basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'CAD',
-         'symbol', '1.0-0')}, {emitEvent : false});
-
-         else{
-          this.accountFormGroup.patchValue({
-            basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'EUR',
-            'symbol', '1.0-0')}, {emitEvent : false});
-         }
-      })
     };
     
-
-  
-
 
    //get all bank details
    public btnListBankDetail(){
@@ -134,18 +99,16 @@ export class BankdetailPresentationComponent implements OnInit {
      if(this.accountFormGroup.value != null){
       this.isSubmitted = true;
      }
-     
+
+    
      if(this.accountFormGroup.value.id!= '' && this.accountFormGroup.value.id)
      { 
-       this.update.emit(this.accountFormGroup.value);
+        this.update.emit(this.accountFormGroup.value);
      }
      else{
-      this.add.emit(this.accountFormGroup.value);
+        this.add.emit(this.accountFormGroup.value);
      }
    }
-
- 
-  
 
    //Get data by ID
    public getBankDetailById(id:number){
@@ -163,7 +126,7 @@ export class BankdetailPresentationComponent implements OnInit {
 
 
 
-   //Delete data 
+   //Delete the bank detail 
    public deleteBankDetail(id:number){
      this.delete.emit(this.accountFormGroup.value)
    }
@@ -173,13 +136,33 @@ export class BankdetailPresentationComponent implements OnInit {
    public btnReset(){
       this.accountFormGroup.reset();
    }
-
-
-  
-  
-
 }
 
 
 
 
+
+
+
+  //  this.accountFormGroup.valueChanges.subscribe( form =>{
+    //   if(form.currency == "INR")
+    //   this.accountFormGroup.patchValue({
+    //     basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'INR',
+    //     'symbol-narrow', '1.0-0')}, {emitEvent : false});
+
+    //     else if(form.currency == "USD")
+    //     this.accountFormGroup.patchValue({
+    //       basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'USD',
+    //       'symbol-narrow', '1.0-0')}, {emitEvent : false});
+
+    //     else if(form.currency == "CAD")
+    //     this.accountFormGroup.patchValue({
+    //      basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'CAD',
+    //      'symbol-narrow', '1.0-0')}, {emitEvent : false});
+
+    //      else{
+    //       this.accountFormGroup.patchValue({
+    //         basic_amt: this.currencyPipe.transform(form.basic_amt.replace(/\D/g, '').replace(/^0+/, ''), 'EUR',
+    //         'symbol-narrow', '1.0-0')}, {emitEvent : false});
+    //      }
+    //   })

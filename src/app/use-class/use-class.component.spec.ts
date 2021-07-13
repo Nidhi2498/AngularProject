@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExampleInjectTokenComponent } from './example-inject-token.component';
+import { UseClassComponent } from './use-class.component';
 
-describe('ExampleInjectTokenComponent', () => {
-  let component: ExampleInjectTokenComponent;
-  let fixture: ComponentFixture<ExampleInjectTokenComponent>;
+describe('UseClassComponent', () => {
+  let component: UseClassComponent;
+  let fixture: ComponentFixture<UseClassComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExampleInjectTokenComponent ]
+      declarations: [ UseClassComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExampleInjectTokenComponent);
+    fixture = TestBed.createComponent(UseClassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

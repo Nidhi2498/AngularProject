@@ -9,8 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BankdetailContainerComponent } from './bankdetail-container/bankdetail-container.component';
 import { BankdetailPresentationComponent } from './bankdetail-container/bankdetail-presentation/bankdetail-presentation.component';
 import { CurrencyPipe } from '@angular/common';
-import { CustomDirective } from './custom.directive';
 import { AccountNameFilterPipe } from './pipes/account-name-filter.pipe';
+import { PhoneMaskDirective } from './phone-mask.directive';
+import { CurrencyPipePipe } from './pipes/currency-pipe.pipe';
+
+//import { AsYouType } from "libphonenumber-js";
 
 
 @NgModule({
@@ -18,8 +21,9 @@ import { AccountNameFilterPipe } from './pipes/account-name-filter.pipe';
     BankDetailsComponent,
     BankdetailContainerComponent,
     BankdetailPresentationComponent,
-    CustomDirective,
-    AccountNameFilterPipe
+    AccountNameFilterPipe,
+    PhoneMaskDirective,
+    CurrencyPipePipe,
   ],
   imports: [
     CommonModule,
