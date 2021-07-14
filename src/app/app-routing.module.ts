@@ -36,7 +36,8 @@ const routes: Routes = [
   { path: 'exampleForkjoin', loadChildren: () => import('./example-forkjoin/example-forkjoin.module').then(m => m.ExampleForkjoinModule) },
   { path: 'Bank-Details', loadChildren: () => import('./bank-details/bank-details.module').then(m => m.BankDetailsModule) },
   { path: 'exampleDOMRender', loadChildren: () => import('./example-domrender/example-domrender.module').then(m => m.ExampleDOMRenderModule) },
-  { path: 'use-class', loadChildren: () => import('./use-class/use-class.module').then(m => m.UseClassModule) }
+  { path: 'use-class', loadChildren: () => import('./use-class/use-class.module').then(m => m.UseClassModule) },
+  { path: 'use-existing', loadChildren: () => import('./use-existing/use-existing.module').then(m => m.UseExistingModule) }
 ];
 
 @NgModule({

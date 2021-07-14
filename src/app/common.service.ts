@@ -15,9 +15,5 @@ export class CommonService {
     return this.http.get<any>('https://jsonplaceholder.typicode.com/users')
   }
 
-  // public getMessage =() =>{
-  //   return this.http.get(environment.apiurl+'/api/message')
-  //   .switchMap()
-  // }
 
 }

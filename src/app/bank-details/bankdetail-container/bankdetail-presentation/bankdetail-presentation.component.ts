@@ -37,9 +37,8 @@ export class BankdetailPresentationComponent implements OnInit {
     if(value){
       this.bankdetails;
       this._accountbankDetail = value
-      //this.bankservicePresenter.bankDetails.pipe((data:any) => {
-
-      // })
+      console.log(value)
+      console.log(value[0].gender == 'female', value[0].basic_amt  * 20 / 100 + value[0].basic_amt)
     }
   }
 
