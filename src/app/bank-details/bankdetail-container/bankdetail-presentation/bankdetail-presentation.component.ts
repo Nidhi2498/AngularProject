@@ -35,10 +35,19 @@ export class BankdetailPresentationComponent implements OnInit {
   //Set method to set the value
   @Input() public set accountbankDetail(value:Bankdetails[]){
     if(value){
+      debugger
       this.bankdetails;
       this._accountbankDetail = value
-      console.log(value)
-      console.log(value[0].gender == 'female', value[0].basic_amt  * 20 / 100 + value[0].basic_amt)
+      this._accountbankDetail.map((val)=>{ 
+        if(val.gender == 'female'){
+          let amount = +((val.basic_amt * 20 / 100) + val.basic_amt)
+          console.log(val.basic_amt)
+        }else{
+          val.basic_amt = val.basic_amt
+        }
+      })
+      // console.log(value)
+      // console.log(value[0].gender == 'female', value[0].basic_amt  * 20 / 100 + value[0].basic_amt)
     }
   }
 
@@ -101,7 +110,7 @@ export class BankdetailPresentationComponent implements OnInit {
 
     
      if(this.accountFormGroup.value.id!= '' && this.accountFormGroup.value.id)
-     { 
+     {
         this.update.emit(this.accountFormGroup.value);
      }
      else{

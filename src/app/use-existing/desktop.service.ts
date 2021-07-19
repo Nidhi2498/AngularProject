@@ -2,14 +2,10 @@ import { Injectable } from '@angular/core';
 import { Computer } from './computer';
 
 @Injectable()
-export class DesktopService {
+export class DesktopService implements Computer{
 
-  constructor() { 
-    
+  constructor() { }
+  getComputerName(): any {
+    return 'desktop'
   }
- 
-  
 }
-
-
-

@@ -9,6 +9,7 @@ export class AccountNameFilterPipe implements PipeTransform {
   transform(value: any, searchTerm: any): any {
     return value.filter(function(search:any){
       return search.account_name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      
     })
   }
 

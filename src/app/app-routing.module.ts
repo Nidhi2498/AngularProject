@@ -37,7 +37,11 @@ const routes: Routes = [
   { path: 'Bank-Details', loadChildren: () => import('./bank-details/bank-details.module').then(m => m.BankDetailsModule) },
   { path: 'exampleDOMRender', loadChildren: () => import('./example-domrender/example-domrender.module').then(m => m.ExampleDOMRenderModule) },
   { path: 'use-class', loadChildren: () => import('./use-class/use-class.module').then(m => m.UseClassModule) },
-  { path: 'use-existing', loadChildren: () => import('./use-existing/use-existing.module').then(m => m.UseExistingModule) }
+  { path: 'ViewContainerRef', loadChildren: () => import('./view-container-ref/view-container-ref.module').then(m => m.ViewContainerRefModule) },
+  { path: 'use-existing', loadChildren: () => import('./use-existing/use-existing.module').then(m => m.UseExistingModule) },
+  { path: 'use-value', loadChildren: () => import('./use-value/use-value.module').then(m => m.UseValueModule) },
+  { path: 'use-factory', loadChildren: () => import('./use-fatory/use-fatory.module').then(m => m.UseFatoryModule) },
+
 ];
 
 @NgModule({

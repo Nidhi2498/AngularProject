@@ -19,22 +19,18 @@ export class BankdetailContainerComponent implements OnInit {
 
 
  
-
-
   //Add new account detail
   public addBankDetail(data:Bankdetails){
     this.bankService.addBankDetail(data).subscribe((data:Bankdetails)=> {
       alert("Account detail added successfully");
     })
-    
   }
 
   //Edit bank account details
   public editBankDetail(data:Bankdetails){
     this.bankService.updateBankDetail(data).subscribe((data:Bankdetails)=> {
       alert("Account detail added successfully");
-    })
-    
+    }) 
   }
 
   

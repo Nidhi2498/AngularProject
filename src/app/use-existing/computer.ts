@@ -1,3 +1,3 @@
-export interface Computer {
-    getComputerName() : any;
+export interface Computer{
+    getComputerName():any; 
 }
