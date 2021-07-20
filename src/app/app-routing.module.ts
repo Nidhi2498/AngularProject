@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'ViewContainerRef', loadChildren: () => import('./view-container-ref/view-container-ref.module').then(m => m.ViewContainerRefModule) },
   { path: 'use-existing', loadChildren: () => import('./use-existing/use-existing.module').then(m => m.UseExistingModule) },
   { path: 'use-value', loadChildren: () => import('./use-value/use-value.module').then(m => m.UseValueModule) },
-  { path: 'use-factory', loadChildren: () => import('./use-fatory/use-fatory.module').then(m => m.UseFatoryModule) },
+  { path: 'use-fatory', loadChildren: () => import('./use-fatory/use-fatory.module').then(m => m.UseFatoryModule) },
 
 ];
 

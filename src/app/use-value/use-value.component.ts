@@ -11,7 +11,7 @@ export const message = new InjectionToken<any>('Hi');
     { //using class
       provide:Book, useValue:book
     },
-    { //direct inject
+    { //using Injection token
       provide:message, useValue:'hello'
     }
   ]

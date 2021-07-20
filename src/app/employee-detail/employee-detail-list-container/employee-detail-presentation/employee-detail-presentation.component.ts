@@ -11,7 +11,7 @@ import { EmployeePresenterService } from '../employee-detail-presenter/employee-
 })
 export class EmployeeDetailPresentationComponent implements OnInit {
 
-  public employeedata = this.employeeService.checkSalary();
+  public employeedata:any;
   //set data from employee-detail-container component
   @Input()   public set employeeData(value: Employee[]){
     if(value){
@@ -33,7 +33,5 @@ export class EmployeeDetailPresentationComponent implements OnInit {
   ngOnInit(): void {
   
   }
-
-  
 }
 

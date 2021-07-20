@@ -10,7 +10,7 @@
         <tr *ngFor = "let employee of employeeData">
             <td>{{employee.empId}}</td>
             <td>{{employee.empName}}</td>
-            <td [style.color]="employee.salary>= 10000? 'blue':'black'">{{employee.salary}}</td>
+            <td>{{employee.salary}}</td>
             <td>{{employee.isGreaterSalary}}</td>
         </tr>
     </tbody>
