@@ -12,6 +12,8 @@ import { CurrencyPipe } from '@angular/common';
 import { AccountNameFilterPipe } from './pipes/account-name-filter.pipe';
 import { PhoneMaskDirective } from './phone-mask.directive';
 import { CurrencyPipePipe } from './pipes/currency-pipe.pipe';
+import { BankListContainerComponent } from './bank-list-container/bank-list-container.component';
+import { BankListPresentationComponent } from './bank-list-container/bank-list-presentation/bank-list-presentation.component';
 
 //import { AsYouType } from "libphonenumber-js";
 
@@ -24,6 +26,8 @@ import { CurrencyPipePipe } from './pipes/currency-pipe.pipe';
     AccountNameFilterPipe,
     PhoneMaskDirective,
     CurrencyPipePipe,
+    BankListContainerComponent,
+    BankListPresentationComponent,
   ],
   imports: [
     CommonModule,

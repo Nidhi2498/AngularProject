@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProfileService } from './profile.service';
 import { ProfileHostDirective } from './profile-host.directive';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -16,12 +17,14 @@ import { ProfileHostDirective } from './profile-host.directive';
     GuestCardComponent,
     ProfileComponent,
     UserCardComponent,
-    ProfileHostDirective
+    ProfileHostDirective,
+    AlertComponent
   ],
   imports: [
     CommonModule,
     ViewContainerRefRoutingModule
   ],
-  providers: [ProfileService]
+  providers: [ProfileService],
+  entryComponents: [AlertComponent]
 })
 export class ViewContainerRefModule { }

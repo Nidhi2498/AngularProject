@@ -13,7 +13,7 @@ export class EmployeeDetailPresentationComponent implements OnInit {
 
   public employeedata:any;
   //set data from employee-detail-container component
-  @Input()   public set employeeData(value: Employee[]){
+  @Input()  public set employeeData(value: Employee[]){
     if(value){
       this.employeedata;
       this._employeeData = value;

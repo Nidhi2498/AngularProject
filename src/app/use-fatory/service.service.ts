@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Fruit } from './fruit';
 
-export const fruit:Fruit[] = [
+ const fruits:Fruit[] = [
   { "name" : "apple" },
   {  "name" : "orange"}, 
   { "name" : "mango"},
-  { "name" : "pineapple"}
+  { "name" : "pineapple"},
+  { "name": "orange"},
+  { "name": "pineapple"},
+  { "name" : "orange"},
+  { "name" : "orange"},
 ];
 
 
@@ -13,6 +17,6 @@ export const fruit:Fruit[] = [
 export class ServiceService {
   //get all fruit name
   getallFruits(): Fruit[]{
-    return fruit;
+    return fruits;
   }
 }

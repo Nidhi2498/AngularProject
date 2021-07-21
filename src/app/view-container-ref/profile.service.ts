@@ -18,7 +18,6 @@ export class ProfileService {
   }
 
   async loadComponent(viewContainer: ViewContainerRef, isloggedIn:boolean){
-    debugger
       //import Guest card component 
       const guest = await import('./guest-card/guest-card.component');
       const user = await import('./user-card/user-card.component');
