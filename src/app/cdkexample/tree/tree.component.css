@@ -1,0 +1,10 @@
+.example-tree-node {
+    display: flex;
+    align-items: left;
+  }
+
+.mat-icon{
+    width: 100%;
+    display: inline-block;
+
+}

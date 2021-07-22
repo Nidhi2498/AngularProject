@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'use-existing', loadChildren: () => import('./use-existing/use-existing.module').then(m => m.UseExistingModule) },
   { path: 'use-value', loadChildren: () => import('./use-value/use-value.module').then(m => m.UseValueModule) },
   { path: 'use-fatory', loadChildren: () => import('./use-fatory/use-fatory.module').then(m => m.UseFatoryModule) },
+  { path: 'cdkexample', loadChildren: () => import('./cdkexample/cdkexample.module').then(m => m.CdkexampleModule) },
 
 ];
 
